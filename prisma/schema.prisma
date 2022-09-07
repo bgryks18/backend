@@ -6,6 +6,92 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id  Int @default(autoincrement()) @id
+  username  String  @unique
+  password  String
+  email String  @unique
+  createdAt DateTime  @default(now())
+}
+
+model Category {
+  id  Int @default(autoincrement()) @id
+  name  String  @unique
+  seoTitle  String?
+  seoContent  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  products  Product[]
+}
+
+model SliderImage {
+  id  Int @default(autoincrement()) @id
+  name  String  @unique
+  path  String
+  sliders ImagesOnSliders[]
+}
+
+model Slider {
+  id  Int @default(autoincrement()) @id
+  name  String @unique
+  images  ImagesOnSliders[]
+  product Product?
+}
+
+model ImagesOnSliders {
+  slider  Slider  @relation(fields: [sliderId], references: [id])
+  sliderId  Int // relation scalar field (used in the `@relation` attribute above)
+  image SliderImage @relation(fields: [imageId], references: [id])
+  imageId Int // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([sliderId, imageId])
+}
+
+model ProductImage {
+  id  Int @default(autoincrement()) @id
+  name  String  @unique
+  path  String
+  product Product?
+
+}
+
+model Product {
+  id  Int @default(autoincrement()) @id
+  name  String  @unique
+  category  Category @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  description String
+  priority  Int
+  slider  Slider  @relation(fields: [sliderId], references: [id])
+  sliderId  Int @unique // relation scalar field (used in the `@relation` attribute above)
+  poster  ProductImage @relation(fields: [posterId], references: [id])
+  posterId  Int @unique
+  seoTitle  String?
+  seoContent  String?
+}
+
+model SiteImage {
+  id  Int @default(autoincrement()) @id
+  name  String  @unique
+  path  String
+  setting Setting?
+
+}
+
+model Setting {
+  id  Int @default(autoincrement()) @id
+  title String
+  keywords  String
+  description String
+  logo  SiteImage @relation(fields: [logoId], references: [id])
+  logoId  Int @unique
+  address String
+  about String
+
 }
