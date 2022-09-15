@@ -5,6 +5,7 @@ import {
   Param,
   Post,
   Put,
+  Delete,
   Query,
   Res,
   UsePipes,
@@ -26,6 +27,7 @@ import {
   CategoryEditReqBody,
   CategoryEntity,
   CategoryListResponse,
+  CategoryDeletedResponse,
 } from './category.model';
 import { CategoryService } from './category.service';
 import { CategoryCreateSchema } from './utils/category.validator';
@@ -106,5 +108,18 @@ export class CategoryController {
     @Param() params: { id: number }
   ): Promise<CategoryEntity> {
     return this.categoryService.edit(Number(params.id), data);
+  }
+
+  @Delete(':id')
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: 'string',
+  })
+  @ApiOkResponse({ type: CategoryDeletedResponse })
+  async delete(
+    @Param() params: { id: number }
+  ): Promise<CategoryDeletedResponse> {
+    return this.categoryService.delete(Number(params.id));
   }
 }

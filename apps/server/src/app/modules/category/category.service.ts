@@ -2,7 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { omit } from 'lodash';
 import { PrismaService } from '../../globals/prisma.service';
 import { CategoryCreateInput, CategoryWhereInput } from './category.dto';
-import { CategoryEntity, CategoryListResponse } from './category.model';
+import {
+  CategoryDeletedResponse,
+  CategoryEntity,
+  CategoryListResponse,
+} from './category.model';
 import { Locals } from '../../middlewares/getList.middleware';
 @Injectable()
 export class CategoryService {
@@ -61,6 +65,20 @@ export class CategoryService {
         },
         data: editCategoryInput,
       });
+    } catch (e) {
+      return e;
+    }
+  }
+
+  async delete(id: number): Promise<CategoryDeletedResponse> {
+    try {
+      await this.prisma.category.delete({
+        where: {
+          id,
+        },
+      });
+
+      return { message: 'Silindi.' };
     } catch (e) {
       return e;
     }

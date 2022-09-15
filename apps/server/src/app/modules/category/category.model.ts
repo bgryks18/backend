@@ -49,3 +49,8 @@ export interface CategoryListResponse {
     count: number;
   };
 }
+
+export class CategoryDeletedResponse {
+  @ApiProperty()
+  message: 'Silindi.' | 'Bir hata oluştu.';
+}
