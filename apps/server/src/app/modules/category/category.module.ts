@@ -1,5 +1,6 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, RequestMethod, Module } from '@nestjs/common';
 import { PrismaService } from '../../globals/prisma.service';
+import { GetListMiddleWare } from '../../middlewares/getList.middleware';
 import { CategoryController } from './category.controller';
 import { CategoryService } from './category.service';
 
@@ -7,4 +8,10 @@ import { CategoryService } from './category.service';
   controllers: [CategoryController],
   providers: [PrismaService, CategoryService],
 })
-export class CategoryModule {}
+export class CategoryModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(GetListMiddleWare)
+      .forRoutes({ path: 'category', method: RequestMethod.GET });
+  }
+}

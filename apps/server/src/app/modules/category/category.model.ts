@@ -20,3 +20,32 @@ export class CategoryEntity implements Category {
   @ApiProperty()
   updatedAt: Date;
 }
+
+export class CategoryCreateReqBody {
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
+  seoTitle: string;
+
+  @ApiProperty()
+  seoContent: string;
+}
+
+export class CategoryEditReqBody {
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
+  seoTitle: string;
+
+  @ApiProperty()
+  seoContent: string;
+}
+
+export interface CategoryListResponse {
+  data: CategoryEntity[];
+  info: {
+    count: number;
+  };
+}
