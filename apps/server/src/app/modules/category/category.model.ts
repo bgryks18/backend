@@ -1,56 +1,56 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Category } from '@prisma/client';
+import { ApiProperty } from '@nestjs/swagger'
+import { Category } from '@prisma/client'
 
 export class CategoryEntity implements Category {
   @ApiProperty()
-  id: number;
+  id: number
 
   @ApiProperty()
-  name: string;
+  name: string
 
   @ApiProperty()
-  seoTitle: string;
+  seoTitle: string
 
   @ApiProperty()
-  seoContent: string;
+  seoContent: string
 
   @ApiProperty()
-  createdAt: Date;
+  createdAt: Date
 
   @ApiProperty()
-  updatedAt: Date;
+  updatedAt: Date
 }
 
 export class CategoryCreateReqBody {
   @ApiProperty()
-  name: string;
+  name: string
 
   @ApiProperty()
-  seoTitle: string;
+  seoTitle: string
 
   @ApiProperty()
-  seoContent: string;
+  seoContent: string
 }
 
 export class CategoryEditReqBody {
   @ApiProperty()
-  name: string;
+  name: string
 
   @ApiProperty()
-  seoTitle: string;
+  seoTitle: string
 
   @ApiProperty()
-  seoContent: string;
+  seoContent: string
 }
 
 export interface CategoryListResponse {
-  data: CategoryEntity[];
+  data: CategoryEntity[]
   info: {
-    count: number;
-  };
+    count: number
+  }
 }
 
 export class CategoryDeletedResponse {
   @ApiProperty()
-  message: 'Silindi.' | 'Bir hata oluştu.';
+  message: 'Silindi.' | 'Bir hata oluştu.'
 }
