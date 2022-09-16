@@ -1,10 +1,5 @@
-import {
-  ArgumentMetadata,
-  BadRequestException,
-  Injectable,
-  PipeTransform,
-} from '@nestjs/common';
-import { AnyObjectSchema } from 'yup';
+import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform } from '@nestjs/common'
+import { AnyObjectSchema } from 'yup'
 
 @Injectable()
 export class YupValidationPipe implements PipeTransform {
@@ -16,12 +11,12 @@ export class YupValidationPipe implements PipeTransform {
         await this.schema.validate(value, {
           abortEarly: false,
           stripUnknown: true,
-        });
+        })
       }
     } catch (error) {
-      throw new BadRequestException(error);
+      throw new BadRequestException(error)
     }
 
-    return value;
+    return value
   }
 }
