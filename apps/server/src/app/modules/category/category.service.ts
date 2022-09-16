@@ -9,13 +9,13 @@ import { ErrorHandler } from '../../utils/errorHandler'
 export class CategoryService {
   constructor(private prisma: PrismaService) {}
 
-  async create(createCategoryInput: CategoryCreateInput): Promise<CategoryEntity | null | any> {
+  async create(createCategoryInput: CategoryCreateInput): Promise<CategoryEntity> {
     try {
       return await this.prisma.category.create({
         data: createCategoryInput,
       })
     } catch (e) {
-      return new ErrorHandler(e)
+      new ErrorHandler(e)
     }
   }
 
@@ -38,9 +38,7 @@ export class CategoryService {
         },
       }
     } catch (e) {
-      console.log('e', e)
-
-      return e
+      new ErrorHandler(e)
     }
   }
 
@@ -61,7 +59,7 @@ export class CategoryService {
         data: editCategoryInput,
       })
     } catch (e) {
-      return e
+      new ErrorHandler(e)
     }
   }
 
@@ -72,16 +70,9 @@ export class CategoryService {
           id,
         },
       })
-
       return { message: 'Silindi.' }
     } catch (e) {
-      return e
+      new ErrorHandler(e)
     }
   }
 }
-
-/*
-parametreleri middleware'e al
-countu da yazdır
-error exception middleware'ı düzenle
-*/
