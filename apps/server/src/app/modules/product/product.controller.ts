@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, Delete, Query, Res, UsePipes, UseFilters } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, Put, Delete, Query, Res, UsePipes } from '@nestjs/common'
 import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiQueryOptions, ApiTags, ApiQuery, ApiParam } from '@nestjs/swagger'
 import { Response } from 'express'
 import { YupValidationPipe } from '../../pipes/yup-validation.pipe'
@@ -23,9 +23,7 @@ export class ProductController {
     type: ProductCreateReqBody,
   })
   @UsePipes(new YupValidationPipe(ProductCreateSchema))
-  @UseFilters(new HttpExceptionFilter())
   @ApiCreatedResponse({ type: ProductEntity })
-  @UseFilters(new HttpExceptionFilter())
   async create(@Body() data: ProductCreateInput): Promise<ProductEntity> {
     return this.productService.create(data)
   }
@@ -57,7 +55,6 @@ export class ProductController {
     type: 'string',
   } as ApiQueryOptions)
   @ApiOkResponse({ type: ProductEntity, isArray: true })
-  @UseFilters(new HttpExceptionFilter())
   async list(@Res({ passthrough: true }) res: Response, @Query() where: ProductWhereInput): Promise<ProductListResponse> {
     return this.productService.list(where, res.locals)
   }
@@ -69,7 +66,6 @@ export class ProductController {
     type: 'string',
   })
   @ApiOkResponse({ type: ProductEntity })
-  @UseFilters(new HttpExceptionFilter())
   async detail(
     @Param()
     params: {
@@ -90,7 +86,6 @@ export class ProductController {
   })
   @UsePipes(new YupValidationPipe(ProductCreateSchema))
   @ApiOkResponse({ type: ProductEntity })
-  @UseFilters(new HttpExceptionFilter())
   async edit(@Body() data: ProductCreateInput, @Param() params: { id: number }): Promise<ProductEntity> {
     return this.productService.edit(Number(params.id), data)
   }
@@ -102,7 +97,6 @@ export class ProductController {
     type: 'string',
   })
   @ApiOkResponse({ type: ProductDeletedResponse })
-  @UseFilters(new HttpExceptionFilter())
   async delete(@Param() params: { id: number }): Promise<ProductDeletedResponse> {
     return this.productService.delete(Number(params.id))
   }

@@ -1,0 +1,185 @@
+
+ >>>>
+Invalid `prisma.category.findMany()` invocation:
+
+{
+  where: {},
+  orderBy: {
+    '434': 'asc'
+  },
+  skip: 0,
+  take: 10
+}
+
+Unknown arg `434` in orderBy.434 for type CategoryOrderByWithRelationInput. Did you mean `id`? Available args:
+type CategoryOrderByWithRelationInput {
+  id?: SortOrder
+  name?: SortOrder
+  seoTitle?: SortOrder
+  seoContent?: SortOrder
+  createdAt?: SortOrder
+  updatedAt?: SortOrder
+  products?: ProductOrderByRelationAggregateInput
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.findMany()` invocation:
+
+{
+  where: {},
+  orderBy: {
+    '434': 'asc'
+  },
+  skip: 0,
+  take: 10
+}
+
+Unknown arg `434` in orderBy.434 for type CategoryOrderByWithRelationInput. Did you mean `id`? Available args:
+type CategoryOrderByWithRelationInput {
+  id?: SortOrder
+  name?: SortOrder
+  seoTitle?: SortOrder
+  seoContent?: SortOrder
+  createdAt?: SortOrder
+  updatedAt?: SortOrder
+  products?: ProductOrderByRelationAggregateInput
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.findMany()` invocation:
+
+{
+  where: {},
+  orderBy: {
+    '434': 'asc'
+  },
+  skip: 0,
+  take: 10
+}
+
+Unknown arg `434` in orderBy.434 for type CategoryOrderByWithRelationInput. Did you mean `id`? Available args:
+type CategoryOrderByWithRelationInput {
+  id?: SortOrder
+  name?: SortOrder
+  seoTitle?: SortOrder
+  seoContent?: SortOrder
+  createdAt?: SortOrder
+  updatedAt?: SortOrder
+  products?: ProductOrderByRelationAggregateInput
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.findMany()` invocation:
+
+{
+  where: {},
+  orderBy: {
+    '434': 'asc'
+  },
+  skip: 65,
+  take: 10
+}
+
+Unknown arg `434` in orderBy.434 for type CategoryOrderByWithRelationInput. Did you mean `id`? Available args:
+type CategoryOrderByWithRelationInput {
+  id?: SortOrder
+  name?: SortOrder
+  seoTitle?: SortOrder
+  seoContent?: SortOrder
+  createdAt?: SortOrder
+  updatedAt?: SortOrder
+  products?: ProductOrderByRelationAggregateInput
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.findMany()` invocation:
+
+{
+  where: {},
+  orderBy: {
+    '434': 'asc'
+  },
+  skip: 65,
+  take: 10
+}
+
+Unknown arg `434` in orderBy.434 for type CategoryOrderByWithRelationInput. Did you mean `id`? Available args:
+type CategoryOrderByWithRelationInput {
+  id?: SortOrder
+  name?: SortOrder
+  seoTitle?: SortOrder
+  seoContent?: SortOrder
+  createdAt?: SortOrder
+  updatedAt?: SortOrder
+  products?: ProductOrderByRelationAggregateInput
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.delete()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+ <<<< 
