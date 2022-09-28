@@ -8,7 +8,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>()
     let status = exception.getStatus()
 
-    if (exception.cause.name === 'NotFoundError') {
+    if (exception?.cause?.name === 'NotFoundError') {
       status = 404
     }
     response.status(status).json({
