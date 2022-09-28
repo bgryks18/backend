@@ -1,4 +1,4 @@
-import { HttpException } from '@nestjs/common'
+import { ConflictException, HttpException, NotFoundException } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
 import * as fs from 'fs'
 import { omit } from 'lodash'
@@ -107,7 +107,7 @@ export class ErrorHandler {
 
           case 'P2002':
             errorObj = { message: 'Aynı isimde bir kayıt zaten var.', field: e.meta?.target }
-            errorCode = 500
+            errorCode = 400
             break
 
           case 'P2003':
@@ -157,7 +157,7 @@ export class ErrorHandler {
 
           case 'P2011':
             errorObj = { message: 'Zorunlu değer girilmemiş.', field: e.meta?.target }
-            errorCode = 500
+            errorCode = 400
             break
 
           case 'P2012':
@@ -480,21 +480,26 @@ export class ErrorHandler {
             break
         }
         throw new HttpException({ ...errorObj, prismaCode: e.code }, errorCode)
+      } else if (e instanceof Prisma.PrismaClientValidationError) {
+        fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + e.message + '\n <<<< \n')
+        throw new HttpException(e, 400)
       } else if (
         e instanceof Prisma.PrismaClientUnknownRequestError ||
-        e instanceof Prisma.PrismaClientValidationError ||
         e instanceof Prisma.PrismaClientRustPanicError ||
         e instanceof Prisma.PrismaClientInitializationError
       ) {
         fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + e.message + '\n <<<< \n')
         throw new HttpException(e, 500)
       } else {
-        if (e.message && e.statusCode) {
+        if (e instanceof NotFoundException) {
+          fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + e.message + '\n <<<< \n')
+          throw new HttpException({ message: e.message }, e.getStatus())
+        } else if (e.message && e.statusCode) {
           fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + e.message + '\n <<<< \n')
           throw new HttpException(omit(e, 'statusCode'), e.statusCode)
         } else {
           fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + 'Bir hata oluştu.' + '\n <<<< \n')
-          throw new HttpException({ message: 'Bir hata oluştu' }, 500)
+          throw new HttpException(e, 500)
         }
       }
     }
