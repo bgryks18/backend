@@ -6,13 +6,16 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp()
     const response = ctx.getResponse<Response>()
     const request = ctx.getRequest<Request>()
-    const status = exception.getStatus()
+    let status = exception.getStatus()
 
+    if (exception.cause.name === 'NotFoundError') {
+      status = 404
+    }
     response.status(status).json({
       timestamp: new Date().toISOString(),
       path: request.url,
-      status,
       ...exception,
+      status: 404,
     })
   }
 }
