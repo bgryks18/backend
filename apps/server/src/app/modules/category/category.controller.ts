@@ -12,7 +12,7 @@ import {
 } from './category.model'
 import { CategoryService } from './category.service'
 import { CategoryCreateSchema } from '../../utils/category.validator'
-import { HttpExceptionFilter } from '../../utils/http-exception.filter'
+
 @ApiTags('Category')
 @Controller('category')
 export class CategoryController {

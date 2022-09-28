@@ -12,7 +12,7 @@ import {
 } from './product.model'
 import { ProductService } from './product.service'
 import { ProductCreateSchema } from '../../utils/product.validator'
-import { HttpExceptionFilter } from '../../utils/http-exception.filter'
+
 @ApiTags('Product')
 @Controller('product')
 export class ProductController {
