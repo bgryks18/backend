@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, Delete, Query, Res, UsePipes } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, Put, Delete, Query, Res, UsePipes, Header, Req } from '@nestjs/common'
 import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiQueryOptions, ApiTags, ApiQuery, ApiParam } from '@nestjs/swagger'
 import { Response } from 'express'
 import { YupValidationPipe } from '../../pipes/yup-validation.pipe'
@@ -109,7 +109,11 @@ export class AdminController {
   })
   @UsePipes(new YupValidationPipe(AdminLoginSchema))
   @ApiCreatedResponse({ type: AdminLoginResponse })
-  async login(@Body() data: AdminLoginInput): Promise<AdminLoginResponse> {
-    return this.adminService.login(data)
+  async login(
+    @Body() data: AdminLoginInput,
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response,
+  ): Promise<AdminLoginResponse> {
+    return this.adminService.login(data, request, response)
   }
 }

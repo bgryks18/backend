@@ -1,4 +1,4 @@
-import { ConflictException, HttpException, NotFoundException } from '@nestjs/common'
+import { ConflictException, HttpException, NotFoundException, UnauthorizedException } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
 import * as fs from 'fs'
 import { omit } from 'lodash'
@@ -6,7 +6,7 @@ export class ErrorHandler {
   constructor(e: any) {
     if (typeof e === 'string') {
       fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + e + '\n <<<< \n')
-      throw new HttpException({ message: e }, 500)
+      throw new HttpException(new Error(e), 500)
     } else {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + e.message + '\n <<<< \n')
@@ -492,6 +492,10 @@ export class ErrorHandler {
         throw new HttpException(e, 500)
       } else {
         if (e instanceof NotFoundException) {
+          fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + e.message + '\n <<<< \n')
+          throw new HttpException({ message: e.message }, e.getStatus())
+        }
+        if (e instanceof UnauthorizedException) {
           fs.appendFileSync('./apps/server/src/app/logs/error.log', '\n >>>>' + e.message + '\n <<<< \n')
           throw new HttpException({ message: e.message }, e.getStatus())
         } else if (e.message && e.statusCode) {

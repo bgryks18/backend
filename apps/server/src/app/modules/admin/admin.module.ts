@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, RequestMethod, Module } from '@nestjs/common'
 import { PrismaService } from '../../globals/prisma.service'
 import { GetListMiddleWare } from '../../middlewares/getList.middleware'
+import { AuthMiddleWare } from '../../middlewares/auth.middleware'
 import { AdminController } from './admin.controller'
 import { AdminService } from './admin.service'
 
@@ -11,5 +12,9 @@ import { AdminService } from './admin.service'
 export class AdminModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(GetListMiddleWare).forRoutes({ path: 'admin', method: RequestMethod.GET })
+    consumer.apply(AuthMiddleWare).forRoutes({ path: 'admin', method: RequestMethod.POST })
+    consumer
+      .apply(AuthMiddleWare)
+      .forRoutes({ path: 'admin/:id', method: RequestMethod.PUT }, { path: 'admin/:id', method: RequestMethod.DELETE })
   }
 }

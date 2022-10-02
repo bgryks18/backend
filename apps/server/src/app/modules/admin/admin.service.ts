@@ -5,6 +5,8 @@ import { AdminCreateInput, AdminLoginInput, AdminWhereInput } from './admin.dto'
 import { AdminDeletedResponse, AdminEntity, AdminListResponse, AdminLoginResponse } from './admin.model'
 import { Locals } from '../../middlewares/getList.middleware'
 import { ErrorHandler } from '../../utils/errorHandler'
+import generateAccessToken from '../../utils/generateAccessToken'
+import { isInteger, toNumber } from 'lodash'
 @Injectable()
 export class AdminService {
   constructor(private prisma: PrismaService) {}
@@ -76,10 +78,26 @@ export class AdminService {
     }
   }
 
-  async login(loginAdminInput: AdminLoginInput): Promise<AdminLoginResponse> {
+  async login(loginAdminInput: AdminLoginInput, request: any, response: any): Promise<AdminLoginResponse> {
     try {
-      console.log('c', loginAdminInput)
-      return
+      await this.prisma.admin.findFirstOrThrow({
+        where: {
+          username: loginAdminInput.username,
+          password: loginAdminInput.password,
+        },
+      })
+      let expireTime = 86400000
+
+      if (request.headers['expiretime'] && isInteger(toNumber(request.headers['expiretime']))) {
+        expireTime = toNumber(request.headers['expiretime'])
+      }
+      const token = await generateAccessToken(loginAdminInput.username, expireTime)
+      response.cookie('Authorization', 'Bearer ' + token, {
+        expires: new Date(Date.now() + expireTime),
+        httpOnly: true,
+        path: '/',
+      })
+      return { token }
     } catch (e) {
       new ErrorHandler(e)
     }
