@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Param, Post, Put, Delete, Query, Res, UsePipes, Header, Req } from '@nestjs/common'
 import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiQueryOptions, ApiTags, ApiQuery, ApiParam } from '@nestjs/swagger'
-import { Response } from 'express'
 import { YupValidationPipe } from '../../pipes/yup-validation.pipe'
 import { AdminCreateInput, AdminLoginInput, AdminWhereInput } from './admin.dto'
 import {
@@ -57,7 +56,7 @@ export class AdminController {
     type: 'string',
   } as ApiQueryOptions)
   @ApiOkResponse({ type: AdminEntity, isArray: true })
-  async list(@Res({ passthrough: true }) res: Response, @Query() where: AdminWhereInput): Promise<AdminListResponse> {
+  async list(@Res({ passthrough: true }) res: any, @Query() where: AdminWhereInput): Promise<AdminListResponse> {
     return this.adminService.list(where, res.locals)
   }
 

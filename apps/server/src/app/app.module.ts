@@ -5,8 +5,22 @@ import { APP_FILTER } from '@nestjs/core'
 import { HttpExceptionFilter } from './utils/http-exception.filter'
 import { AdminModule } from './modules/admin/admin.module'
 import { AuthMiddleWare } from './middlewares/auth.middleware'
+import { SliderModule } from './modules/slider/slider.module'
+import { SliderImageModule } from './modules/sliderImage/sliderImage.module'
+import { ServeStaticModule } from '@nestjs/serve-static'
+import { join } from 'path'
 @Module({
-  imports: [CategoryModule, ProductModule, AdminModule],
+  imports: [
+    CategoryModule,
+    ProductModule,
+    AdminModule,
+    SliderModule,
+    SliderImageModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../../..', 'uploads'),
+      serveRoot: '/uploads',
+    }),
+  ],
   providers: [
     {
       provide: APP_FILTER,
@@ -33,5 +47,20 @@ export class AppModule {
     consumer
       .apply(AuthMiddleWare)
       .forRoutes({ path: 'admin/:id', method: RequestMethod.PUT }, { path: 'admin/:id', method: RequestMethod.DELETE })
+
+    /* slider */
+    consumer.apply(AuthMiddleWare).forRoutes({ path: 'slider', method: RequestMethod.POST })
+    consumer
+      .apply(AuthMiddleWare)
+      .forRoutes({ path: 'slider/:id', method: RequestMethod.PUT }, { path: 'slider/:id', method: RequestMethod.DELETE })
+
+    /* sliderImage */
+    consumer.apply(AuthMiddleWare).forRoutes({ path: 'sliderImage', method: RequestMethod.POST })
+    consumer
+      .apply(AuthMiddleWare)
+      .forRoutes(
+        { path: 'sliderImage/:id', method: RequestMethod.PUT },
+        { path: 'sliderImage/:id', method: RequestMethod.DELETE },
+      )
   }
 }

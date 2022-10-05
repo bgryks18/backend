@@ -58,9 +58,6 @@ export class ProductCreateReqBody {
 
 export class ProductEditReqBody {
   @ApiProperty()
-  id: number
-
-  @ApiProperty()
   name: string
 
   @ApiProperty()

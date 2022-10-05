@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Param, Post, Put, Delete, Query, Res, UsePipes } from '@nestjs/common'
 import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiQueryOptions, ApiTags, ApiQuery, ApiParam } from '@nestjs/swagger'
-import { Response } from 'express'
 import { YupValidationPipe } from '../../pipes/yup-validation.pipe'
 import { ProductCreateInput, ProductWhereInput } from './product.dto'
 import {
@@ -55,7 +54,7 @@ export class ProductController {
     type: 'string',
   } as ApiQueryOptions)
   @ApiOkResponse({ type: ProductEntity, isArray: true })
-  async list(@Res({ passthrough: true }) res: Response, @Query() where: ProductWhereInput): Promise<ProductListResponse> {
+  async list(@Res({ passthrough: true }) res: any, @Query() where: ProductWhereInput): Promise<ProductListResponse> {
     return this.productService.list(where, res.locals)
   }
 

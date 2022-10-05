@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Param, Post, Put, Delete, Query, Res, UsePipes } from '@nestjs/common'
 import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiQueryOptions, ApiTags, ApiQuery, ApiParam } from '@nestjs/swagger'
-import { Response } from 'express'
 import { YupValidationPipe } from '../../pipes/yup-validation.pipe'
 import { CategoryCreateInput, CategoryWhereInput } from './category.dto'
 import {
@@ -55,7 +54,7 @@ export class CategoryController {
     type: 'string',
   } as ApiQueryOptions)
   @ApiOkResponse({ type: CategoryEntity, isArray: true })
-  async list(@Res({ passthrough: true }) res: Response, @Query() where: CategoryWhereInput): Promise<CategoryListResponse> {
+  async list(@Res({ passthrough: true }) res: any, @Query() where: CategoryWhereInput): Promise<CategoryListResponse> {
     return this.categoryService.list(where, res.locals)
   }
 
