@@ -20,9 +20,24 @@ export class ProductImageService {
         data: {
           name,
           path,
+          product: {
+            connect: {
+              id: Number(productId),
+            },
+          },
         },
         include: {
-          product: productId,
+          product: {
+            include: {
+              category: true,
+              slider: {
+                include: {
+                  images: true,
+                  _count: true,
+                },
+              },
+            },
+          },
         },
       })
     } catch (e) {
@@ -37,6 +52,19 @@ export class ProductImageService {
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
+        include: {
+          product: {
+            include: {
+              category: true,
+              slider: {
+                include: {
+                  images: true,
+                  _count: true,
+                },
+              },
+            },
+          },
+        },
       })
       return {
         data: res,
@@ -55,7 +83,22 @@ export class ProductImageService {
 
   async detail(id: number): Promise<ProductImageEntity> {
     try {
-      return await this.prisma.productImage.findFirstOrThrow({ where: { id: id } })
+      return await this.prisma.productImage.findFirstOrThrow({
+        where: { id: id },
+        include: {
+          product: {
+            include: {
+              category: true,
+              slider: {
+                include: {
+                  images: true,
+                  _count: true,
+                },
+              },
+            },
+          },
+        },
+      })
     } catch (e) {
       new ErrorHandler(e)
     }

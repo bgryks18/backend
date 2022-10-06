@@ -14,7 +14,17 @@ export class CategoryService {
       return await this.prisma.category.create({
         data: createCategoryInput,
         include: {
-          products: true,
+          products: {
+            include: {
+              poster: true,
+              slider: {
+                include: {
+                  images: true,
+                  _count: true,
+                },
+              },
+            },
+          },
         },
       })
     } catch (e) {
@@ -30,7 +40,17 @@ export class CategoryService {
         skip: locals.offset,
         take: locals.limit,
         include: {
-          products: true,
+          products: {
+            include: {
+              poster: true,
+              slider: {
+                include: {
+                  images: true,
+                  _count: true,
+                },
+              },
+            },
+          },
         },
       })
       return {
@@ -53,7 +73,17 @@ export class CategoryService {
       return await this.prisma.category.findFirstOrThrow({
         where: { id: id },
         include: {
-          products: true,
+          products: {
+            include: {
+              poster: true,
+              slider: {
+                include: {
+                  images: true,
+                  _count: true,
+                },
+              },
+            },
+          },
         },
       })
     } catch (e) {
@@ -69,7 +99,17 @@ export class CategoryService {
         },
         data: editCategoryInput,
         include: {
-          products: true,
+          products: {
+            include: {
+              poster: true,
+              slider: {
+                include: {
+                  images: true,
+                  _count: true,
+                },
+              },
+            },
+          },
         },
       })
     } catch (e) {

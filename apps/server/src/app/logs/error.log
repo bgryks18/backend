@@ -657,3 +657,504 @@ Invalid `prisma.product.create()` invocation:
 
 Foreign key constraint failed on the field: `sliderId`
  <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    product: 13
+             ~~
+  },
+  include: {
+    images: true,
+    product: true
+  }
+}
+
+Argument product: Got invalid value 13 on prisma.createOneSlider. Provided Int, expected ProductCreateNestedOneWithoutSliderInput:
+type ProductCreateNestedOneWithoutSliderInput {
+  create?: ProductCreateWithoutSliderInput | ProductUncheckedCreateWithoutSliderInput
+  connectOrCreate?: ProductCreateOrConnectWithoutSliderInput
+  connect?: ProductWhereUniqueInput
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Failed to validate the query: `Unable to match input value to any allowed input type for the field. Parse errors: [Query parsing/validation error at `Mutation.createOneProduct.data.ProductCreateInput.poster`: A value is required but not set., Query parsing/validation error at `Mutation.createOneProduct.data.ProductUncheckedCreateInput.categoryId`: A value is required but not set.]` at `Mutation.createOneProduct.data`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Failed to validate the query: `Unable to match input value to any allowed input type for the field. Parse errors: [Query parsing/validation error at `Mutation.createOneProduct.data.ProductCreateInput.poster`: A value is required but not set., Query parsing/validation error at `Mutation.createOneProduct.data.ProductUncheckedCreateInput.categoryId`: A value is required but not set.]` at `Mutation.createOneProduct.data`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Failed to validate the query: `Unable to match input value to any allowed input type for the field. Parse errors: [Query parsing/validation error at `Mutation.createOneProduct.data.ProductCreateInput.poster`: A value is required but not set., Query parsing/validation error at `Mutation.createOneProduct.data.ProductUncheckedCreateInput.categoryId`: A value is required but not set.]` at `Mutation.createOneProduct.data`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    description: 'string',
+    priority: 0,
+    categoryId: undefined,
+    sliderId: undefined,
+    posterId: undefined,
++   poster: {
++     create?: ProductImageCreateWithoutProductInput | ProductImageUncheckedCreateWithoutProductInput,
++     connectOrCreate?: ProductImageCreateOrConnectWithoutProductInput,
++     connect?: ProductImageWhereUniqueInput
++   },
+?   category?: {
+?     create?: CategoryCreateWithoutProductsInput | CategoryUncheckedCreateWithoutProductsInput,
+?     connectOrCreate?: CategoryCreateOrConnectWithoutProductsInput,
+?     connect?: CategoryWhereUniqueInput
+?   },
+?   slider?: {
+?     create?: SliderCreateWithoutProductInput | SliderUncheckedCreateWithoutProductInput,
+?     connectOrCreate?: SliderCreateOrConnectWithoutProductInput,
+?     connect?: SliderWhereUniqueInput
+?   },
+?   seoTitle?: String | null,
+?   seoContent?: String | null
+  },
+  include: {
+    category: true,
+    poster: true,
+    slider: true
+  }
+}
+
+Argument poster for data.poster is missing.
+
+Note: Lines with + are required, lines with ? are optional.
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Product_name_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 
+
+ >>>>
+Invalid `prisma.productImage.create()` invocation:
+
+{
+  data: {
+    name: 'deneme5',
+    path: 'uploads\1665074246506-8323009501_1598452306_resim.png',
+    product: {
+      connect: {
+?       posterId?: Int,
+?       id?: Int,
+?       name?: String,
+?       categoryId?: Int,
+?       sliderId?: Int
+      },
+?     create?: ProductCreateWithoutPosterInput | ProductUncheckedCreateWithoutPosterInput,
+?     connectOrCreate?: {
+?       where: ProductWhereUniqueInput,
+?       create: ProductCreateWithoutPosterInput | ProductUncheckedCreateWithoutPosterInput
+?     }
+    }
+  },
+  include: {
+    product: true
+  }
+}
+
+Argument data.product.connect of type ProductWhereUniqueInput needs at least one argument. Available args are listed in green.
+
+Note: Lines with ? are optional.
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.productImage.create()` invocation:
+
+{
+  data: {
+    name: 'deneme5',
+    path: 'uploads\1665074265799-2210952191_1598452306_resim.png',
+    product: {
+      connect: {
+        posterId: NaN
+                  ~~~
+      }
+    }
+  },
+  include: {
+    product: true
+  }
+}
+
+Argument posterId: Got invalid value NaN on prisma.createOneProductImage. Provided Float, expected Int.
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.productImage.create()` invocation:
+
+{
+  data: {
+    name: 'deneme5',
+    path: 'uploads\1665074367174-5528500511_1598452306_resim.png',
+    product: {
+      connect: {
+?       id?: Int,
+?       name?: String,
+?       categoryId?: Int,
+?       sliderId?: Int,
+?       posterId?: Int
+      },
+?     create?: ProductCreateWithoutPosterInput | ProductUncheckedCreateWithoutPosterInput,
+?     connectOrCreate?: {
+?       where: ProductWhereUniqueInput,
+?       create: ProductCreateWithoutPosterInput | ProductUncheckedCreateWithoutPosterInput
+?     }
+    }
+  },
+  include: {
+    product: true
+  }
+}
+
+Argument data.product.connect of type ProductWhereUniqueInput needs at least one argument. Available args are listed in green.
+
+Note: Lines with ? are optional.
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.productImage.create()` invocation:
+
+{
+  data: {
+    name: 'deneme5',
+    path: 'uploads\1665074383857-458407381_1598452306_resim.png',
+    product: {
+      connect: {
+        id: NaN
+            ~~~
+      }
+    }
+  },
+  include: {
+    product: true
+  }
+}
+
+Argument id: Got invalid value NaN on prisma.createOneProductImage. Provided Float, expected Int.
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.productImage.create()` invocation:
+
+{
+  data: {
+    name: 'deneme5',
+    path: 'uploads\1665074631723-4515090361_1598452306_resim.png',
+    product: {
+      connect: {
+        id: NaN
+            ~~~
+      }
+    }
+  },
+  include: {
+    product: true
+  }
+}
+
+Argument id: Got invalid value NaN on prisma.createOneProductImage. Provided Float, expected Int.
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.productImage.create()` invocation:
+
+{
+  data: {
+    name: 'deneme5',
+    path: 'uploads\1665074736993-9427344501_1598452306_resim.png',
+    product: {
+      connect: {
+        id: NaN
+            ~~~
+      }
+    }
+  },
+  include: {
+    product: true
+  }
+}
+
+Argument id: Got invalid value NaN on prisma.createOneProductImage. Provided Float, expected Int.
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.update()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 
+
+ >>>>
+Invalid `prisma.sliderImage.create()` invocation:
+
+{
+  data: {
+    name: 'deneme1',
+    path: 'uploads\1665081004872-2694575111_1598452306_resim.png',
+    slider: {
+      connect: {
+        id: '14'
+            ~~~~
+      }
+    }
+  }
+}
+
+Argument id: Got invalid value '14' on prisma.createOneSliderImage. Provided String, expected Int.
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'stringa',
+    images: [
+      {
+        id: 13,
+        name: 'deneme1',
+        path: 'uploads\1665081052656-1711499261_1598452306_resim.png',
+        sliderId: 14
+      },
+      {
+        id: 14,
+        name: 'deneme2',
+        path: 'uploads\1665081064738-7199713041_1598452306_resim.png',
+        sliderId: 14
+      }
+    ]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  },
+  include: {
+    images: true,
+    product: true
+  }
+}
+
+Argument images: Got invalid value 
+[
+  {
+    id: 13,
+    name: 'deneme1',
+    path: 'uploads\1665081052656-1711499261_1598452306_resim.png',
+    sliderId: 14
+  },
+  {
+    id: 14,
+    name: 'deneme2',
+    path: 'uploads\1665081064738-7199713041_1598452306_resim.png',
+    sliderId: 14
+  }
+]
+on prisma.createOneSlider. Provided List<Json>, expected SliderImageCreateNestedManyWithoutSliderInput:
+type SliderImageCreateNestedManyWithoutSliderInput {
+  create?: SliderImageCreateWithoutSliderInput | List<SliderImageCreateWithoutSliderInput> | SliderImageUncheckedCreateWithoutSliderInput | List<SliderImageUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: SliderImageCreateOrConnectWithoutSliderInput | List<SliderImageCreateOrConnectWithoutSliderInput>
+  createMany?: SliderImageCreateManySliderInputEnvelope
+  connect?: SliderImageWhereUniqueInput | List<SliderImageWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    seoTitle: 'string',
+    seoContent: 'string',
+    products: [
+      16
+    ]
+    ~~~~~~~
+  },
+  include: {
+    products: true
+  }
+}
+
+Argument products: Got invalid value 
+[
+  16
+]
+on prisma.createOneCategory. Provided List<Int>, expected ProductCreateNestedManyWithoutCategoryInput:
+type ProductCreateNestedManyWithoutCategoryInput {
+  create?: ProductCreateWithoutCategoryInput | List<ProductCreateWithoutCategoryInput> | ProductUncheckedCreateWithoutCategoryInput | List<ProductUncheckedCreateWithoutCategoryInput>
+  connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | List<ProductCreateOrConnectWithoutCategoryInput>
+  createMany?: ProductCreateManyCategoryInputEnvelope
+  connect?: ProductWhereUniqueInput | List<ProductWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.update()` invocation:
+
+{
+  where: {
+    id: 16
+  },
+  data: {
+    name: 'string',
+    category: {
+    ~~~~~~~~
+      id: 189,
+      name: 'string',
+      seoTitle: 'string',
+      seoContent: 'string',
+      createdAt: '2022-10-06T20:48:03.602Z',
+      updatedAt: '2022-10-06T20:48:03.604Z'
+    },
+    description: 'string',
+    priority: 0,
+    posterId: 1,
+    seoTitle: 'string',
+    seoContent: 'string'
+  },
+  include: {
+    category: true,
+    poster: true,
+    slider: true
+  }
+}
+
+Unknown arg `category` in data.category for type ProductUncheckedUpdateInput. Did you mean `categoryId`? Available args:
+type ProductUncheckedUpdateInput {
+  id?: Int | IntFieldUpdateOperationsInput
+  name?: String | StringFieldUpdateOperationsInput
+  categoryId?: Int | NullableIntFieldUpdateOperationsInput | Null
+  description?: String | StringFieldUpdateOperationsInput
+  priority?: Int | IntFieldUpdateOperationsInput
+  sliderId?: Int | NullableIntFieldUpdateOperationsInput | Null
+  posterId?: Int | NullableIntFieldUpdateOperationsInput | Null
+  seoTitle?: String | NullableStringFieldUpdateOperationsInput | Null
+  seoContent?: String | NullableStringFieldUpdateOperationsInput | Null
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.update()` invocation:
+
+{
+  where: {
+    id: 16
+  },
+  data: {
+    name: 'string',
+    category: {
+      update: {
+        id: 189,
+        name: 'string',
+        seoTitle: 'string',
+        seoContent: 'string',
+        createdAt: '2022-10-06T20:48:03.602Z',
+        updatedAt: '2022-10-06T20:48:03.604Z'
+      }
+    },
+    description: 'string',
+    priority: 0,
+    posterId: 1,
+    ~~~~~~~~
+    seoTitle: 'string',
+    seoContent: 'string'
+  },
+  include: {
+    category: true,
+    poster: true,
+    slider: true
+  }
+}
+
+Unknown arg `posterId` in data.posterId for type ProductUpdateInput. Did you mean `poster`? Available args:
+type ProductUpdateInput {
+  name?: String | StringFieldUpdateOperationsInput
+  category?: CategoryUpdateOneWithoutProductsNestedInput
+  description?: String | StringFieldUpdateOperationsInput
+  priority?: Int | IntFieldUpdateOperationsInput
+  slider?: SliderUpdateOneWithoutProductNestedInput
+  poster?: ProductImageUpdateOneWithoutProductNestedInput
+  seoTitle?: String | NullableStringFieldUpdateOperationsInput | Null
+  seoContent?: String | NullableStringFieldUpdateOperationsInput | Null
+}
+
+
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>
+Invalid `prisma.productImage.create()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. No 'Product' record to connect was found was found for a nested connect on one-to-one relation 'ProductToProductImage'.
+ <<<< 

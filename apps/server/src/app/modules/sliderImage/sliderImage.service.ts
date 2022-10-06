@@ -22,6 +22,20 @@ export class SliderImageService {
           path,
           sliderId: Number(sliderId),
         },
+        include: {
+          slider: {
+            include: {
+              images: true,
+              product: {
+                include: {
+                  category: true,
+                  poster: true,
+                },
+              },
+              _count: true,
+            },
+          },
+        },
       })
     } catch (e) {
       new ErrorHandler(e)
@@ -35,6 +49,20 @@ export class SliderImageService {
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
+        include: {
+          slider: {
+            include: {
+              images: true,
+              product: {
+                include: {
+                  category: true,
+                  poster: true,
+                },
+              },
+              _count: true,
+            },
+          },
+        },
       })
       return {
         data: res,
@@ -53,7 +81,23 @@ export class SliderImageService {
 
   async detail(id: number): Promise<SliderImageEntity> {
     try {
-      return await this.prisma.sliderImage.findFirstOrThrow({ where: { id: id } })
+      return await this.prisma.sliderImage.findFirstOrThrow({
+        where: { id: id },
+        include: {
+          slider: {
+            include: {
+              images: true,
+              product: {
+                include: {
+                  category: true,
+                  poster: true,
+                },
+              },
+              _count: true,
+            },
+          },
+        },
+      })
     } catch (e) {
       new ErrorHandler(e)
     }

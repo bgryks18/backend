@@ -16,6 +16,7 @@ export class SliderService {
         include: {
           images: true,
           product: true,
+          _count: true,
         },
       })
     } catch (e) {
@@ -33,6 +34,7 @@ export class SliderService {
         include: {
           images: true,
           product: true,
+          _count: true,
         },
       })
       return {
@@ -57,6 +59,7 @@ export class SliderService {
         include: {
           images: true,
           product: true,
+          _count: true,
         },
       })
     } catch (e) {
@@ -74,6 +77,7 @@ export class SliderService {
         include: {
           images: true,
           product: true,
+          _count: true,
         },
       })
     } catch (e) {

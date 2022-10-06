@@ -52,7 +52,7 @@ export class ProductImageController {
         name: {
           type: 'string',
         },
-        product: {
+        productId: {
           type: 'number',
         },
         image: {

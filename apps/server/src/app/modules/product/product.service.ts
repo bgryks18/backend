@@ -16,7 +16,12 @@ export class ProductService {
         include: {
           category: true,
           poster: true,
-          slider: true,
+          slider: {
+            include: {
+              images: true,
+              _count: true,
+            },
+          },
         },
       })
     } catch (e) {
@@ -34,7 +39,12 @@ export class ProductService {
         include: {
           category: true,
           poster: true,
-          slider: true,
+          slider: {
+            include: {
+              images: true,
+              _count: true,
+            },
+          },
         },
       })
       return {
@@ -59,7 +69,12 @@ export class ProductService {
         include: {
           category: true,
           poster: true,
-          slider: true,
+          slider: {
+            include: {
+              images: true,
+              _count: true,
+            },
+          },
         },
       })
     } catch (e) {
@@ -77,7 +92,12 @@ export class ProductService {
         include: {
           category: true,
           poster: true,
-          slider: true,
+          slider: {
+            include: {
+              images: true,
+              _count: true,
+            },
+          },
         },
       })
     } catch (e) {

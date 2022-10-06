@@ -54,14 +54,14 @@ model ProductImage {
 model Product {
   id  Int @default(autoincrement()) @id
   name  String  @unique
-  category  Category @relation(fields: [categoryId], references: [id])
-  categoryId  Int
+  category  Category? @relation(fields: [categoryId], references: [id])
+  categoryId  Int? @unique
   description String
   priority  Int
-  slider  Slider  @relation(fields: [sliderId], references: [id])
-  sliderId  Int @unique // relation scalar field (used in the `@relation` attribute above)
-  poster  ProductImage @relation(fields: [posterId], references: [id])
-  posterId  Int @unique
+  slider  Slider?  @relation(fields: [sliderId], references: [id])
+  sliderId  Int? @unique // relation scalar field (used in the `@relation` attribute above)
+  poster  ProductImage? @relation(fields: [posterId], references: [id])
+  posterId  Int? @unique
   seoTitle  String?
   seoContent  String?
 }

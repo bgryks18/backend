@@ -18,17 +18,11 @@ export class SliderEntity implements Slider {
 export class SliderCreateReqBody {
   @ApiProperty()
   name: string
-
-  @ApiProperty()
-  product: number
 }
 
 export class SliderEditReqBody {
   @ApiProperty()
   name: string
-
-  @ApiProperty()
-  product: number
 }
 
 export interface SliderListResponse {
