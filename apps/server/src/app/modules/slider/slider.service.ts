@@ -71,6 +71,10 @@ export class SliderService {
           id,
         },
         data: editSliderInput,
+        include: {
+          images: true,
+          product: true,
+        },
       })
     } catch (e) {
       new ErrorHandler(e)
