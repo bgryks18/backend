@@ -13,6 +13,9 @@ export class CategoryService {
     try {
       return await this.prisma.category.create({
         data: createCategoryInput,
+        include: {
+          products: true,
+        },
       })
     } catch (e) {
       new ErrorHandler(e)
@@ -26,6 +29,9 @@ export class CategoryService {
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
+        include: {
+          products: true,
+        },
       })
       return {
         data: res,
@@ -44,7 +50,12 @@ export class CategoryService {
 
   async detail(id: number): Promise<CategoryEntity> {
     try {
-      return await this.prisma.category.findFirstOrThrow({ where: { id: id } })
+      return await this.prisma.category.findFirstOrThrow({
+        where: { id: id },
+        include: {
+          products: true,
+        },
+      })
     } catch (e) {
       new ErrorHandler(e)
     }
@@ -57,6 +68,9 @@ export class CategoryService {
           id,
         },
         data: editCategoryInput,
+        include: {
+          products: true,
+        },
       })
     } catch (e) {
       new ErrorHandler(e)

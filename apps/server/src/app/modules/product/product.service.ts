@@ -13,6 +13,11 @@ export class ProductService {
     try {
       return await this.prisma.product.create({
         data: createProductInput,
+        include: {
+          category: true,
+          poster: true,
+          slider: true,
+        },
       })
     } catch (e) {
       new ErrorHandler(e)
@@ -26,6 +31,11 @@ export class ProductService {
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
+        include: {
+          category: true,
+          poster: true,
+          slider: true,
+        },
       })
       return {
         data: res,
@@ -44,7 +54,14 @@ export class ProductService {
 
   async detail(id: number): Promise<ProductEntity> {
     try {
-      return await this.prisma.product.findFirstOrThrow({ where: { id: id } })
+      return await this.prisma.product.findFirstOrThrow({
+        where: { id: id },
+        include: {
+          category: true,
+          poster: true,
+          slider: true,
+        },
+      })
     } catch (e) {
       new ErrorHandler(e)
     }
@@ -57,6 +74,11 @@ export class ProductService {
           id,
         },
         data: editProductInput,
+        include: {
+          category: true,
+          poster: true,
+          slider: true,
+        },
       })
     } catch (e) {
       new ErrorHandler(e)

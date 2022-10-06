@@ -9,6 +9,7 @@ import { SliderModule } from './modules/slider/slider.module'
 import { SliderImageModule } from './modules/sliderImage/sliderImage.module'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { join } from 'path'
+import { ProductImageModule } from './modules/productImage/productImage.module'
 @Module({
   imports: [
     CategoryModule,
@@ -16,6 +17,7 @@ import { join } from 'path'
     AdminModule,
     SliderModule,
     SliderImageModule,
+    ProductImageModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../../..', 'uploads'),
       serveRoot: '/uploads',

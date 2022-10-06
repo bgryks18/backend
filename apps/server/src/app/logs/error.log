@@ -589,3 +589,71 @@ type SliderImageCreateNestedManyWithoutSliderInput {
 
 
  <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>
+Invalid `prisma.category.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Category_name_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    product: 0
+             ~
+  },
+  include: {
+    images: true,
+    product: true
+  }
+}
+
+Argument product: Got invalid value 0 on prisma.createOneSlider. Provided Int, expected ProductCreateNestedOneWithoutSliderInput:
+type ProductCreateNestedOneWithoutSliderInput {
+  create?: ProductCreateWithoutSliderInput | ProductUncheckedCreateWithoutSliderInput
+  connectOrCreate?: ProductCreateOrConnectWithoutSliderInput
+  connect?: ProductWhereUniqueInput
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Product_name_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Product_sliderId_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 
