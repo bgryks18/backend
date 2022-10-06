@@ -1,0 +1,591 @@
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      'string'
+    ]
+    ~~~~~~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  'string'
+]
+on prisma.createOneSlider. Provided List<String>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      '7'
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  '7'
+]
+on prisma.createOneSlider. Provided List<String>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      7
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  7
+]
+on prisma.createOneSlider. Provided List<Int>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      7
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  7
+]
+on prisma.createOneSlider. Provided List<Int>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      7
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  7
+]
+on prisma.createOneSlider. Provided List<Int>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      7
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  7
+]
+on prisma.createOneSlider. Provided List<Int>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      {
+        imageId: 7
+      }
+    ]
+    ~~~~~~~~~~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  {
+    imageId: 7
+  }
+]
+on prisma.createOneSlider. Provided List<Json>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Slider_name_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Slider_name_key`
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      {
+        imageId: 7
+      }
+    ]
+    ~~~~~~~~~~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  {
+    imageId: 7
+  }
+]
+on prisma.createOneSlider. Provided List<Json>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      7
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  7
+]
+on prisma.createOneSlider. Provided List<Int>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      7
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  7
+]
+on prisma.createOneSlider. Provided List<Int>, expected ImagesOnSlidersCreateNestedManyWithoutSliderInput:
+type ImagesOnSlidersCreateNestedManyWithoutSliderInput {
+  create?: ImagesOnSlidersCreateWithoutSliderInput | List<ImagesOnSlidersCreateWithoutSliderInput> | ImagesOnSlidersUncheckedCreateWithoutSliderInput | List<ImagesOnSlidersUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: ImagesOnSlidersCreateOrConnectWithoutSliderInput | List<ImagesOnSlidersCreateOrConnectWithoutSliderInput>
+  createMany?: ImagesOnSlidersCreateManySliderInputEnvelope
+  connect?: ImagesOnSlidersWhereUniqueInput | List<ImagesOnSlidersWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.sliderImage.create()` invocation:
+
+{
+  data: {
+    name: 'asd',
+    path: 'uploads\1664981743678-5108148371_1598452306_resim.png',
+    sliderId: undefined,
++   slider: {
++     create?: SliderCreateWithoutImagesInput | SliderUncheckedCreateWithoutImagesInput,
++     connectOrCreate?: SliderCreateOrConnectWithoutImagesInput,
++     connect?: SliderWhereUniqueInput
++   }
+  }
+}
+
+Argument slider for data.slider is missing.
+
+Note: Lines with + are required
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      7
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  7
+]
+on prisma.createOneSlider. Provided List<Int>, expected SliderImageCreateNestedManyWithoutSliderInput:
+type SliderImageCreateNestedManyWithoutSliderInput {
+  create?: SliderImageCreateWithoutSliderInput | List<SliderImageCreateWithoutSliderInput> | SliderImageUncheckedCreateWithoutSliderInput | List<SliderImageUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: SliderImageCreateOrConnectWithoutSliderInput | List<SliderImageCreateOrConnectWithoutSliderInput>
+  createMany?: SliderImageCreateManySliderInputEnvelope
+  connect?: SliderImageWhereUniqueInput | List<SliderImageWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.sliderImage.create()` invocation:
+
+{
+  data: {
+    name: 'asd',
+    path: 'uploads\1664982203256-4014716861_1598452306_resim.png',
+    sliderId: undefined,
++   slider: {
++     create?: SliderCreateWithoutImagesInput | SliderUncheckedCreateWithoutImagesInput,
++     connectOrCreate?: SliderCreateOrConnectWithoutImagesInput,
++     connect?: SliderWhereUniqueInput
++   }
+  }
+}
+
+Argument slider for data.slider is missing.
+
+Note: Lines with + are required
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.sliderImage.create()` invocation:
+
+{
+  data: {
+    name: 'asd',
+    path: 'uploads\1664982309709-8291268851_1598452306_resim.png',
+    slider: {
+      connect: {
+        id: '2'
+            ~~~
+      }
+    }
+  }
+}
+
+Argument id: Got invalid value '2' on prisma.createOneSliderImage. Provided String, expected Int.
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Slider_name_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.sliderImage.create()` invocation:
+
+{
+  data: {
+    name: 'deneme1',
+    path: 'uploads\1665039440798-8525309231_1598452306_resim.png',
+    slider: {
+      connect: {
+        id: '1'
+            ~~~
+      }
+    }
+  }
+}
+
+Argument id: Got invalid value '1' on prisma.createOneSliderImage. Provided String, expected Int.
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.sliderImage.create()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      9
+    ]
+    ~~~~~
+  }
+}
+
+Argument images: Got invalid value 
+[
+  9
+]
+on prisma.createOneSlider. Provided List<Int>, expected SliderImageCreateNestedManyWithoutSliderInput:
+type SliderImageCreateNestedManyWithoutSliderInput {
+  create?: SliderImageCreateWithoutSliderInput | List<SliderImageCreateWithoutSliderInput> | SliderImageUncheckedCreateWithoutSliderInput | List<SliderImageUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: SliderImageCreateOrConnectWithoutSliderInput | List<SliderImageCreateOrConnectWithoutSliderInput>
+  createMany?: SliderImageCreateManySliderInputEnvelope
+  connect?: SliderImageWhereUniqueInput | List<SliderImageWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Slider_name_key`
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>Bir hata oluştu.
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    images: [
+      12
+    ]
+    ~~~~~
+  },
+  include: {
+    images: true,
+    product: true
+  }
+}
+
+Argument images: Got invalid value 
+[
+  12
+]
+on prisma.createOneSlider. Provided List<Int>, expected SliderImageCreateNestedManyWithoutSliderInput:
+type SliderImageCreateNestedManyWithoutSliderInput {
+  create?: SliderImageCreateWithoutSliderInput | List<SliderImageCreateWithoutSliderInput> | SliderImageUncheckedCreateWithoutSliderInput | List<SliderImageUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: SliderImageCreateOrConnectWithoutSliderInput | List<SliderImageCreateOrConnectWithoutSliderInput>
+  createMany?: SliderImageCreateManySliderInputEnvelope
+  connect?: SliderImageWhereUniqueInput | List<SliderImageWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'w',
+    images: [
+      12
+    ]
+    ~~~~~
+  },
+  include: {
+    images: true,
+    product: true
+  }
+}
+
+Argument images: Got invalid value 
+[
+  12
+]
+on prisma.createOneSlider. Provided List<Int>, expected SliderImageCreateNestedManyWithoutSliderInput:
+type SliderImageCreateNestedManyWithoutSliderInput {
+  create?: SliderImageCreateWithoutSliderInput | List<SliderImageCreateWithoutSliderInput> | SliderImageUncheckedCreateWithoutSliderInput | List<SliderImageUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: SliderImageCreateOrConnectWithoutSliderInput | List<SliderImageCreateOrConnectWithoutSliderInput>
+  createMany?: SliderImageCreateManySliderInputEnvelope
+  connect?: SliderImageWhereUniqueInput | List<SliderImageWhereUniqueInput>
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Slider_name_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'c',
+    images: [
+      {
+        id: 12,
+        name: 'resim2',
+        path: 'uploads\1665045432896-8902306041_1598452306_resim.png'
+      }
+    ]
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  },
+  include: {
+    images: true,
+    product: true
+  }
+}
+
+Argument images: Got invalid value 
+[
+  {
+    id: 12,
+    name: 'resim2',
+    path: 'uploads\1665045432896-8902306041_1598452306_resim.png'
+  }
+]
+on prisma.createOneSlider. Provided List<Json>, expected SliderImageCreateNestedManyWithoutSliderInput:
+type SliderImageCreateNestedManyWithoutSliderInput {
+  create?: SliderImageCreateWithoutSliderInput | List<SliderImageCreateWithoutSliderInput> | SliderImageUncheckedCreateWithoutSliderInput | List<SliderImageUncheckedCreateWithoutSliderInput>
+  connectOrCreate?: SliderImageCreateOrConnectWithoutSliderInput | List<SliderImageCreateOrConnectWithoutSliderInput>
+  createMany?: SliderImageCreateManySliderInputEnvelope
+  connect?: SliderImageWhereUniqueInput | List<SliderImageWhereUniqueInput>
+}
+
+
+ <<<< 

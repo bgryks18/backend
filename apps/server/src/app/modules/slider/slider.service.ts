@@ -13,6 +13,10 @@ export class SliderService {
     try {
       return await this.prisma.slider.create({
         data: createSliderInput,
+        include: {
+          images: true,
+          product: true,
+        },
       })
     } catch (e) {
       new ErrorHandler(e)
@@ -26,6 +30,10 @@ export class SliderService {
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
+        include: {
+          images: true,
+          product: true,
+        },
       })
       return {
         data: res,
@@ -44,7 +52,13 @@ export class SliderService {
 
   async detail(id: number): Promise<SliderEntity> {
     try {
-      return await this.prisma.slider.findFirstOrThrow({ where: { id: id } })
+      return await this.prisma.slider.findFirstOrThrow({
+        where: { id: id },
+        include: {
+          images: true,
+          product: true,
+        },
+      })
     } catch (e) {
       new ErrorHandler(e)
     }

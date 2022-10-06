@@ -32,25 +32,15 @@ model SliderImage {
   id  Int @default(autoincrement()) @id
   name  String  @unique
   path  String
-  sliders ImagesOnSliders[]
+  slider Slider @relation(fields: [sliderId], references: [id])
+  sliderId Int
 }
 
 model Slider {
   id  Int @default(autoincrement()) @id
   name  String @unique
-  images  ImagesOnSliders[]
+  images  SliderImage[]
   product Product?
-}
-
-model ImagesOnSliders {
-  slider  Slider  @relation(fields: [sliderId], references: [id])
-  sliderId  Int // relation scalar field (used in the `@relation` attribute above)
-  image SliderImage @relation(fields: [imageId], references: [id])
-  imageId Int // relation scalar field (used in the `@relation` attribute above)
-  assignedAt DateTime @default(now())
-  assignedBy String
-
-  @@id([sliderId, imageId])
 }
 
 model ProductImage {

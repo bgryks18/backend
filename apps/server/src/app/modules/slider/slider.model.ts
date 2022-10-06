@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { Slider } from '@prisma/client'
+import { Slider, SliderImage, Product } from '@prisma/client'
 
 export class SliderEntity implements Slider {
   @ApiProperty()
@@ -9,10 +9,10 @@ export class SliderEntity implements Slider {
   name: string
 
   @ApiProperty()
-  product?: number
+  product?: Product
 
   @ApiProperty()
-  images?: number[]
+  images?: SliderImage[]
 }
 
 export class SliderCreateReqBody {
@@ -21,9 +21,6 @@ export class SliderCreateReqBody {
 
   @ApiProperty()
   product: number
-
-  @ApiProperty()
-  images: number[]
 }
 
 export class SliderEditReqBody {
@@ -32,9 +29,6 @@ export class SliderEditReqBody {
 
   @ApiProperty()
   product: number
-
-  @ApiProperty()
-  images: number[]
 }
 
 export interface SliderListResponse {

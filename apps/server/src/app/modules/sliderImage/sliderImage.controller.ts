@@ -52,6 +52,9 @@ export class SliderImageController {
         name: {
           type: 'string',
         },
+        sliderId: {
+          type: 'number',
+        },
         image: {
           type: 'string',
           format: 'binary',

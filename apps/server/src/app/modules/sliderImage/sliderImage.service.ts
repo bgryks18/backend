@@ -14,12 +14,13 @@ export class SliderImageService {
   async create(sliderImage: any, req: Request): Promise<SliderImageEntity> {
     try {
       const { path } = sliderImage
-      const { name } = req.body
+      const { name, sliderId } = req.body
 
       return await this.prisma.sliderImage.create({
         data: {
           name,
           path,
+          sliderId: Number(sliderId),
         },
       })
     } catch (e) {

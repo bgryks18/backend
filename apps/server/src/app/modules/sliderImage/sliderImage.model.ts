@@ -10,6 +10,9 @@ export class SliderImageEntity implements SliderImage {
 
   @ApiProperty()
   path: string
+
+  @ApiProperty()
+  sliderId: number
 }
 
 export class SliderImageCreateReqBody {
@@ -18,6 +21,9 @@ export class SliderImageCreateReqBody {
 
   @ApiProperty()
   path: string
+
+  @ApiProperty()
+  sliderId: number
 }
 
 export class SliderImageEditReqBody {
@@ -26,6 +32,9 @@ export class SliderImageEditReqBody {
 
   @ApiProperty()
   path: string
+
+  @ApiProperty()
+  sliderId: number
 }
 
 export interface SliderImageListResponse {
