@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { Product } from '@prisma/client'
+import { Prisma, Category, Slider, ProductImage } from '@prisma/client'
 
-export class ProductEntity implements Product {
+export class ProductEntity {
   @ApiProperty()
   id: number
 
@@ -9,7 +9,7 @@ export class ProductEntity implements Product {
   name: string
 
   @ApiProperty()
-  categoryId: number
+  category: Category
 
   @ApiProperty()
   description: string
@@ -18,10 +18,10 @@ export class ProductEntity implements Product {
   priority: number
 
   @ApiProperty()
-  sliderId: number
+  slider: Slider
 
   @ApiProperty()
-  posterId: number
+  poster: ProductImage
 
   @ApiProperty()
   seoTitle: string
@@ -30,7 +30,7 @@ export class ProductEntity implements Product {
   seoContent: string
 }
 
-export class ProductCreateReqBody {
+export class ProductCreateReqBody implements Prisma.ProductCreateInput {
   @ApiProperty()
   name: string
 

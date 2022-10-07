@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { ProductImage } from '@prisma/client'
+import { ProductImage, Product } from '@prisma/client'
 
 export class ProductImageEntity implements ProductImage {
   @ApiProperty()
@@ -10,6 +10,9 @@ export class ProductImageEntity implements ProductImage {
 
   @ApiProperty()
   path: string
+
+  @ApiProperty()
+  product: Product
 }
 
 export class ProductImageCreateReqBody {

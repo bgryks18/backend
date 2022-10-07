@@ -1158,3 +1158,41 @@ Invalid `prisma.productImage.create()` invocation:
 
 An operation failed because it depends on one or more records that were required but not found. No 'Product' record to connect was found was found for a nested connect on one-to-one relation 'ProductToProductImage'.
  <<<< 
+
+ >>>>
+Invalid `prisma.product.findMany()` invocation:
+
+{
+  where: {},
+  orderBy: {
+    id: 'asc'
+  },
+  skip: 0,
+  take: 10,
+  include: {
+  ~~~~~~~
+    category: true,
+    poster: true,
+    slider: {
+      include: {
+        images: true
+      },
+      select: {
+        images: true,
+        _count: true
+      }
+    }
+  }
+}
+
+
+Please either use `include` or `select`, but not both at the same time.
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 

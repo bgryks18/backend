@@ -12,7 +12,7 @@ export class SliderEntity implements Slider {
   product?: Product
 
   @ApiProperty()
-  images?: SliderImage[]
+  images?: { id: number; name: string; path: string }[]
 }
 
 export class SliderCreateReqBody {

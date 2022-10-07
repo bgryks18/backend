@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { SliderImage } from '@prisma/client'
+import { Slider } from '@prisma/client'
 
-export class SliderImageEntity implements SliderImage {
+export class SliderImageEntity {
   @ApiProperty()
   id: number
 
@@ -12,7 +12,7 @@ export class SliderImageEntity implements SliderImage {
   path: string
 
   @ApiProperty()
-  sliderId: number
+  slider: Slider
 }
 
 export class SliderImageCreateReqBody {

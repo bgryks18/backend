@@ -25,11 +25,23 @@ export class SliderImageService {
         include: {
           slider: {
             include: {
-              images: true,
+              images: {
+                select: {
+                  id: true,
+                  name: true,
+                  path: true,
+                },
+              },
               product: {
                 include: {
                   category: true,
-                  poster: true,
+                  poster: {
+                    select: {
+                      id: true,
+                      name: true,
+                      path: true,
+                    },
+                  },
                 },
               },
               _count: true,
@@ -52,11 +64,23 @@ export class SliderImageService {
         include: {
           slider: {
             include: {
-              images: true,
+              images: {
+                select: {
+                  id: true,
+                  name: true,
+                  path: true,
+                },
+              },
               product: {
                 include: {
                   category: true,
-                  poster: true,
+                  poster: {
+                    select: {
+                      id: true,
+                      name: true,
+                      path: true,
+                    },
+                  },
                 },
               },
               _count: true,
@@ -86,11 +110,23 @@ export class SliderImageService {
         include: {
           slider: {
             include: {
-              images: true,
+              images: {
+                select: {
+                  id: true,
+                  name: true,
+                  path: true,
+                },
+              },
               product: {
                 include: {
                   category: true,
-                  poster: true,
+                  poster: {
+                    select: {
+                      id: true,
+                      name: true,
+                      path: true,
+                    },
+                  },
                 },
               },
               _count: true,

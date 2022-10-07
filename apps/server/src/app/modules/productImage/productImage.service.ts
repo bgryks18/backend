@@ -32,7 +32,13 @@ export class ProductImageService {
               category: true,
               slider: {
                 include: {
-                  images: true,
+                  images: {
+                    select: {
+                      id: true,
+                      name: true,
+                      path: true,
+                    },
+                  },
                   _count: true,
                 },
               },
@@ -58,7 +64,13 @@ export class ProductImageService {
               category: true,
               slider: {
                 include: {
-                  images: true,
+                  images: {
+                    select: {
+                      id: true,
+                      name: true,
+                      path: true,
+                    },
+                  },
                   _count: true,
                 },
               },
@@ -91,7 +103,13 @@ export class ProductImageService {
               category: true,
               slider: {
                 include: {
-                  images: true,
+                  images: {
+                    select: {
+                      id: true,
+                      name: true,
+                      path: true,
+                    },
+                  },
                   _count: true,
                 },
               },

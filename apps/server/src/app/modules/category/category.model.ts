@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { Category, Product } from '@prisma/client'
+import { Category, Prisma } from '@prisma/client'
 
 export class CategoryEntity implements Category {
   @ApiProperty()
@@ -21,7 +21,7 @@ export class CategoryEntity implements Category {
   updatedAt: Date
 
   @ApiProperty()
-  products?: Product[]
+  products?: Prisma.ProductCreateInput[]
 }
 
 export class CategoryCreateReqBody {

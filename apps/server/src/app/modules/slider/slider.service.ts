@@ -14,7 +14,13 @@ export class SliderService {
       return await this.prisma.slider.create({
         data: createSliderInput,
         include: {
-          images: true,
+          images: {
+            select: {
+              id: true,
+              name: true,
+              path: true,
+            },
+          },
           product: true,
           _count: true,
         },
@@ -32,7 +38,13 @@ export class SliderService {
         skip: locals.offset,
         take: locals.limit,
         include: {
-          images: true,
+          images: {
+            select: {
+              id: true,
+              name: true,
+              path: true,
+            },
+          },
           product: true,
           _count: true,
         },
@@ -57,7 +69,13 @@ export class SliderService {
       return await this.prisma.slider.findFirstOrThrow({
         where: { id: id },
         include: {
-          images: true,
+          images: {
+            select: {
+              id: true,
+              name: true,
+              path: true,
+            },
+          },
           product: true,
           _count: true,
         },
@@ -75,7 +93,13 @@ export class SliderService {
         },
         data: editSliderInput,
         include: {
-          images: true,
+          images: {
+            select: {
+              id: true,
+              name: true,
+              path: true,
+            },
+          },
           product: true,
           _count: true,
         },
