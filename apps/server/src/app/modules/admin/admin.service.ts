@@ -102,4 +102,19 @@ export class AdminService {
       new ErrorHandler(e)
     }
   }
+
+  async deleteMany(idList: number[]): Promise<AdminDeletedResponse> {
+    try {
+      await this.prisma.admin.deleteMany({
+        where: {
+          id: {
+            in: idList,
+          },
+        },
+      })
+      return { message: 'Silindi.' }
+    } catch (e) {
+      new ErrorHandler(e)
+    }
+  }
 }

@@ -31,6 +31,7 @@ import {
   SliderImageEntity,
   SliderImageListResponse,
   SliderImageDeletedResponse,
+  SliderImageDeleteManyReqBody,
 } from './sliderImage.model'
 import { SliderImageService } from './sliderImage.service'
 import { SliderImageCreateSchema } from '../../utils/sliderImage.validator'
@@ -132,5 +133,14 @@ export class SliderImageController {
   @ApiOkResponse({ type: SliderImageDeletedResponse })
   async delete(@Param() params: { id: number }): Promise<SliderImageDeletedResponse> {
     return this.sliderImageService.delete(Number(params.id))
+  }
+
+  @Delete('/delete/many')
+  @ApiBody({
+    type: SliderImageDeleteManyReqBody,
+  })
+  @ApiOkResponse({ type: SliderImageDeletedResponse })
+  async deleteMany(@Body() data: { idList: any[] }): Promise<SliderImageDeletedResponse> {
+    return this.sliderImageService.deleteMany(data.idList.map((item: any) => Number(item)))
   }
 }

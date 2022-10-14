@@ -153,4 +153,19 @@ export class CategoryService {
       new ErrorHandler(e)
     }
   }
+
+  async deleteMany(idList: number[]): Promise<CategoryDeletedResponse> {
+    try {
+      await this.prisma.category.deleteMany({
+        where: {
+          id: {
+            in: idList,
+          },
+        },
+      })
+      return { message: 'Silindi.' }
+    } catch (e) {
+      new ErrorHandler(e)
+    }
+  }
 }

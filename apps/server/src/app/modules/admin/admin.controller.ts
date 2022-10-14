@@ -10,6 +10,7 @@ import {
   AdminDeletedResponse,
   AdminLoginResponse,
   AdminLoginBody,
+  AdminDeleteManyReqBody,
 } from './admin.model'
 import { AdminService } from './admin.service'
 import { AdminCreateSchema, AdminLoginSchema } from '../../utils/admin.validator'
@@ -114,5 +115,14 @@ export class AdminController {
     @Res({ passthrough: true }) response: Response,
   ): Promise<AdminLoginResponse> {
     return this.adminService.login(data, request, response)
+  }
+
+  @Delete('/delete/many')
+  @ApiBody({
+    type: AdminDeleteManyReqBody,
+  })
+  @ApiOkResponse({ type: AdminDeletedResponse })
+  async deleteMany(@Body() data: { idList: any[] }): Promise<AdminDeletedResponse> {
+    return this.adminService.deleteMany(data.idList.map((item: any) => Number(item)))
   }
 }

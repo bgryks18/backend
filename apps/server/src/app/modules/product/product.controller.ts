@@ -8,6 +8,7 @@ import {
   ProductEntity,
   ProductListResponse,
   ProductDeletedResponse,
+  ProductDeleteManyReqBody,
 } from './product.model'
 import { ProductService } from './product.service'
 import { ProductCreateSchema } from '../../utils/product.validator'
@@ -98,5 +99,14 @@ export class ProductController {
   @ApiOkResponse({ type: ProductDeletedResponse })
   async delete(@Param() params: { id: number }): Promise<ProductDeletedResponse> {
     return this.productService.delete(Number(params.id))
+  }
+
+  @Delete('/delete/many')
+  @ApiBody({
+    type: ProductDeleteManyReqBody,
+  })
+  @ApiOkResponse({ type: ProductDeletedResponse })
+  async deleteMany(@Body() data: { idList: any[] }): Promise<ProductDeletedResponse> {
+    return this.productService.deleteMany(data.idList.map((item: any) => Number(item)))
   }
 }

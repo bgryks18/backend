@@ -31,6 +31,11 @@ export class ProductImageEditReqBody {
   path: string
 }
 
+export class ProductImageDeleteManyReqBody {
+  @ApiProperty()
+  idList: number[]
+}
+
 export interface ProductImageListResponse {
   data: ProductImageEntity[]
   info: {

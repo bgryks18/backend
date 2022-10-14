@@ -2,7 +2,14 @@ import { Body, Controller, Get, Param, Post, Put, Delete, Query, Res, UsePipes }
 import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiQueryOptions, ApiTags, ApiQuery, ApiParam } from '@nestjs/swagger'
 import { YupValidationPipe } from '../../pipes/yup-validation.pipe'
 import { SliderCreateInput, SliderWhereInput } from './slider.dto'
-import { SliderCreateReqBody, SliderEditReqBody, SliderEntity, SliderListResponse, SliderDeletedResponse } from './slider.model'
+import {
+  SliderCreateReqBody,
+  SliderEditReqBody,
+  SliderEntity,
+  SliderListResponse,
+  SliderDeletedResponse,
+  SliderDeleteManyReqBody,
+} from './slider.model'
 import { SliderService } from './slider.service'
 import { SliderCreateSchema } from '../../utils/slider.validator'
 
@@ -92,5 +99,14 @@ export class SliderController {
   @ApiOkResponse({ type: SliderDeletedResponse })
   async delete(@Param() params: { id: number }): Promise<SliderDeletedResponse> {
     return this.sliderService.delete(Number(params.id))
+  }
+
+  @Delete('/delete/many')
+  @ApiBody({
+    type: SliderDeleteManyReqBody,
+  })
+  @ApiOkResponse({ type: SliderDeletedResponse })
+  async deleteMany(@Body() data: { idList: any[] }): Promise<SliderDeletedResponse> {
+    return this.sliderService.deleteMany(data.idList.map((item: any) => Number(item)))
   }
 }

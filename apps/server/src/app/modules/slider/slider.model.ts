@@ -25,6 +25,11 @@ export class SliderEditReqBody {
   name: string
 }
 
+export class SliderDeleteManyReqBody {
+  @ApiProperty()
+  idList: number[]
+}
+
 export interface SliderListResponse {
   data: SliderEntity[]
   info: {

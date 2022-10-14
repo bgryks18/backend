@@ -46,6 +46,11 @@ export class CategoryEditReqBody {
   seoContent: string
 }
 
+export class CategoryDeleteManyReqBody {
+  @ApiProperty()
+  idList: number[]
+}
+
 export interface CategoryListResponse {
   data: CategoryEntity[]
   info: {

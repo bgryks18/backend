@@ -31,6 +31,7 @@ import {
   ProductImageEntity,
   ProductImageListResponse,
   ProductImageDeletedResponse,
+  ProductImageDeleteManyReqBody,
 } from './productImage.model'
 import { ProductImageService } from './productImage.service'
 import { ProductImageCreateSchema } from '../../utils/productImage.validator'
@@ -132,5 +133,14 @@ export class ProductImageController {
   @ApiOkResponse({ type: ProductImageDeletedResponse })
   async delete(@Param() params: { id: number }): Promise<ProductImageDeletedResponse> {
     return this.productImageService.delete(Number(params.id))
+  }
+
+  @Delete('/delete/many')
+  @ApiBody({
+    type: ProductImageDeleteManyReqBody,
+  })
+  @ApiOkResponse({ type: ProductImageDeletedResponse })
+  async deleteMany(@Body() data: { idList: any[] }): Promise<ProductImageDeletedResponse> {
+    return this.productImageService.deleteMany(data.idList.map((item: any) => Number(item)))
   }
 }

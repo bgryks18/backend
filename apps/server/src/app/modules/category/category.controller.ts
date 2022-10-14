@@ -8,6 +8,7 @@ import {
   CategoryEntity,
   CategoryListResponse,
   CategoryDeletedResponse,
+  CategoryDeleteManyReqBody,
 } from './category.model'
 import { CategoryService } from './category.service'
 import { CategoryCreateSchema } from '../../utils/category.validator'
@@ -98,5 +99,14 @@ export class CategoryController {
   @ApiOkResponse({ type: CategoryDeletedResponse })
   async delete(@Param() params: { id: number }): Promise<CategoryDeletedResponse> {
     return this.categoryService.delete(Number(params.id))
+  }
+
+  @Delete('/delete/many')
+  @ApiBody({
+    type: CategoryDeleteManyReqBody,
+  })
+  @ApiOkResponse({ type: CategoryDeletedResponse })
+  async deleteMany(@Body() data: { idList: any[] }): Promise<CategoryDeletedResponse> {
+    return this.categoryService.deleteMany(data.idList.map((item: any) => Number(item)))
   }
 }

@@ -37,6 +37,10 @@ export class SliderImageEditReqBody {
   sliderId: number
 }
 
+export class SliderImageDeleteManyReqBody {
+  @ApiProperty()
+  idList: number[]
+}
 export interface SliderImageListResponse {
   data: SliderImageEntity[]
   info: {

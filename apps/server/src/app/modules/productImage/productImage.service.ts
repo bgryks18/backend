@@ -140,4 +140,19 @@ export class ProductImageService {
       new ErrorHandler(e)
     }
   }
+
+  async deleteMany(idList: number[]): Promise<ProductImageDeletedResponse> {
+    try {
+      await this.prisma.productImage.deleteMany({
+        where: {
+          id: {
+            in: idList,
+          },
+        },
+      })
+      return { message: 'Silindi.' }
+    } catch (e) {
+      new ErrorHandler(e)
+    }
+  }
 }

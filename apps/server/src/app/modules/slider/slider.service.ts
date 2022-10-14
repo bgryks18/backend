@@ -121,4 +121,19 @@ export class SliderService {
       new ErrorHandler(e)
     }
   }
+
+  async deleteMany(idList: number[]): Promise<SliderDeletedResponse> {
+    try {
+      await this.prisma.productImage.deleteMany({
+        where: {
+          id: {
+            in: idList,
+          },
+        },
+      })
+      return { message: 'Silindi.' }
+    } catch (e) {
+      new ErrorHandler(e)
+    }
+  }
 }

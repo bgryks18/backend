@@ -48,6 +48,11 @@ export class AdminLoginBody {
   password: string
 }
 
+export class AdminDeleteManyReqBody {
+  @ApiProperty()
+  idList: number[]
+}
+
 export interface AdminListResponse {
   data: AdminEntity[]
   info: {

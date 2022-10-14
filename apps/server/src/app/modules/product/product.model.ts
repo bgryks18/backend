@@ -82,6 +82,11 @@ export class ProductEditReqBody {
   seoContent: string
 }
 
+export class ProductDeleteManyReqBody {
+  @ApiProperty()
+  idList: number[]
+}
+
 export interface ProductListResponse {
   data: ProductEntity[]
   info: {
