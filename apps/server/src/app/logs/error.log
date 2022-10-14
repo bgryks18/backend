@@ -1196,3 +1196,148 @@ Invalid `prisma.product.create()` invocation:
 
 Foreign key constraint failed on the field: `sliderId`
  <<<< 
+
+ >>>>
+Invalid `prisma.slider.findFirstOrThrow()` invocation:
+
+{
+  where: {
+    id: NaN
+        ~~~
+  },
+  include: {
+    images: {
+      select: {
+        id: true,
+        name: true,
+        path: true
+      }
+    },
+    product: true,
+    _count: true
+  }
+}
+
+Argument id: Got invalid value NaN on prisma.findFirstSlider. Provided Float, expected IntFilter or Int:
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.findFirstOrThrow()` invocation:
+
+{
+  where: {
+    id: NaN
+        ~~~
+  },
+  include: {
+    images: {
+      select: {
+        id: true,
+        name: true,
+        path: true
+      }
+    },
+    product: true,
+    _count: true
+  }
+}
+
+Argument id: Got invalid value NaN on prisma.findFirstSlider. Provided Float, expected IntFilter or Int:
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Slider_name_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.slider.create()` invocation:
+
+{
+  data: {
+    name: 'string',
+    productId: 16
+    ~~~~~~~~~
+  },
+  include: {
+    images: {
+      select: {
+        id: true,
+        name: true,
+        path: true
+      }
+    },
+    product: true,
+    _count: true
+  }
+}
+
+Unknown arg `productId` in data.productId for type SliderCreateInput. Did you mean `product`? Available args:
+type SliderCreateInput {
+  name: String
+  images?: SliderImageCreateNestedManyWithoutSliderInput
+  product?: ProductCreateNestedOneWithoutSliderInput
+}
+
+
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Unique constraint failed on the constraint: `Product_name_key`
+ <<<< 
+
+ >>>>
+Invalid `prisma.product.create()` invocation:
+
+
+Foreign key constraint failed on the field: `sliderId`
+ <<<< 
