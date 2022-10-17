@@ -124,6 +124,44 @@ export class ProductImageController {
     return this.productImageService.detail(Number(params.id))
   }
 
+  @Put(':id')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        name: {
+          type: 'string',
+        },
+        productId: {
+          type: 'number',
+        },
+        image: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: 'number',
+  })
+  @ApiOkResponse({ type: ProductImageEntity })
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: multer.diskStorage({
+        destination: 'uploads',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+  )
+  async edit(@UploadedFile() image: any, @Req() req: Request): Promise<any> {
+    return this.productImageService.edit(image, req)
+  }
+
   @Delete(':id')
   @ApiParam({
     name: 'id',

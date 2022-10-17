@@ -2,7 +2,12 @@ import { Injectable } from '@nestjs/common'
 import { omit } from 'lodash'
 import { PrismaService } from '../../globals/prisma.service'
 import { ProductImageCreateInput, ProductImageWhereInput } from './productImage.dto'
-import { ProductImageDeletedResponse, ProductImageEntity, ProductImageListResponse } from './productImage.model'
+import {
+  ProductImageDeletedResponse,
+  ProductImageEditReqBody,
+  ProductImageEntity,
+  ProductImageListResponse,
+} from './productImage.model'
 import { Locals } from '../../middlewares/getList.middleware'
 import { ErrorHandler } from '../../utils/errorHandler'
 import { Request } from 'express'
@@ -96,7 +101,51 @@ export class ProductImageService {
   async detail(id: number): Promise<ProductImageEntity> {
     try {
       return await this.prisma.productImage.findFirstOrThrow({
-        where: { id: id },
+        where: { id },
+        include: {
+          product: {
+            include: {
+              category: true,
+              slider: {
+                include: {
+                  images: {
+                    select: {
+                      id: true,
+                      name: true,
+                      path: true,
+                    },
+                  },
+                  _count: true,
+                },
+              },
+            },
+          },
+        },
+      })
+    } catch (e) {
+      new ErrorHandler(e)
+    }
+  }
+
+  async edit(productImage: any, req: Request): Promise<ProductImageEntity> {
+    try {
+      const { path } = productImage
+      const { name, productId } = req.body
+      const { id } = req.params
+
+      return await this.prisma.productImage.update({
+        where: {
+          id: Number(id),
+        },
+        data: {
+          name,
+          path,
+          product: {
+            connect: {
+              id: Number(productId),
+            },
+          },
+        },
         include: {
           product: {
             include: {

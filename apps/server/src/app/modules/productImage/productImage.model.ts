@@ -12,7 +12,7 @@ export class ProductImageEntity implements ProductImage {
   path: string
 
   @ApiProperty()
-  product: Product
+  product?: Product
 }
 
 export class ProductImageCreateReqBody {
