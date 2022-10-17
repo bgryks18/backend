@@ -36,25 +36,41 @@ export class AppModule {
     consumer.apply(AuthMiddleWare).forRoutes({ path: 'category', method: RequestMethod.POST })
     consumer
       .apply(AuthMiddleWare)
-      .forRoutes({ path: 'category/:id', method: RequestMethod.PUT }, { path: 'category/:id', method: RequestMethod.DELETE })
+      .forRoutes(
+        { path: 'category/:id', method: RequestMethod.PUT },
+        { path: 'category/:id', method: RequestMethod.DELETE },
+        { path: 'category/delete/many', method: RequestMethod.DELETE },
+      )
 
     /* product */
     consumer.apply(AuthMiddleWare).forRoutes({ path: 'product', method: RequestMethod.POST })
     consumer
       .apply(AuthMiddleWare)
-      .forRoutes({ path: 'product/:id', method: RequestMethod.PUT }, { path: 'product/:id', method: RequestMethod.DELETE })
+      .forRoutes(
+        { path: 'product/:id', method: RequestMethod.PUT },
+        { path: 'product/:id', method: RequestMethod.DELETE },
+        { path: 'product/delete/many', method: RequestMethod.DELETE },
+      )
 
     /* admin */
     consumer.apply(AuthMiddleWare).forRoutes({ path: 'admin', method: RequestMethod.POST })
     consumer
       .apply(AuthMiddleWare)
-      .forRoutes({ path: 'admin/:id', method: RequestMethod.PUT }, { path: 'admin/:id', method: RequestMethod.DELETE })
+      .forRoutes(
+        { path: 'admin/:id', method: RequestMethod.PUT },
+        { path: 'admin/:id', method: RequestMethod.DELETE },
+        { path: 'admin/delete/many', method: RequestMethod.DELETE },
+      )
 
     /* slider */
     consumer.apply(AuthMiddleWare).forRoutes({ path: 'slider', method: RequestMethod.POST })
     consumer
       .apply(AuthMiddleWare)
-      .forRoutes({ path: 'slider/:id', method: RequestMethod.PUT }, { path: 'slider/:id', method: RequestMethod.DELETE })
+      .forRoutes(
+        { path: 'slider/:id', method: RequestMethod.PUT },
+        { path: 'slider/:id', method: RequestMethod.DELETE },
+        { path: 'slider/delete/many', method: RequestMethod.DELETE },
+      )
 
     /* sliderImage */
     consumer.apply(AuthMiddleWare).forRoutes({ path: 'sliderImage', method: RequestMethod.POST })
@@ -63,6 +79,17 @@ export class AppModule {
       .forRoutes(
         { path: 'sliderImage/:id', method: RequestMethod.PUT },
         { path: 'sliderImage/:id', method: RequestMethod.DELETE },
+        { path: 'sliderImage/delete/many', method: RequestMethod.DELETE },
+      )
+
+    /* productImage */
+    consumer.apply(AuthMiddleWare).forRoutes({ path: 'productImage', method: RequestMethod.POST })
+    consumer
+      .apply(AuthMiddleWare)
+      .forRoutes(
+        { path: 'productImage/:id', method: RequestMethod.PUT },
+        { path: 'productImage/:id', method: RequestMethod.DELETE },
+        { path: 'productImage/delete/many', method: RequestMethod.DELETE },
       )
   }
 }
