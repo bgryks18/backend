@@ -1,6 +1,6 @@
 import { Prisma } from '.prisma/client'
 
-export type CategoryCreateInput = Prisma.CategoryUncheckedCreateInput
+export type CategoryCreateInput = Prisma.CategoryCreateWithoutProductsInput
 
 export interface CategoryWhereInput extends Prisma.CategoryWhereInput {
   sort?: 'asc' | 'desc'
