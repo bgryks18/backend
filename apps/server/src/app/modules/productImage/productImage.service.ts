@@ -15,21 +15,15 @@ import * as fs from 'fs'
 @Injectable()
 export class ProductImageService {
   constructor(private prisma: PrismaService) {}
-
   async create(productImage: any, req: Request): Promise<ProductImageEntity> {
     try {
       const { path } = productImage
-      const { name, productId } = req.body
+      const { name } = req.body
 
       return await this.prisma.productImage.create({
         data: {
           name,
           path,
-          product: {
-            connect: {
-              id: Number(productId),
-            },
-          },
         },
         include: {
           product: {
@@ -129,22 +123,18 @@ export class ProductImageService {
 
   async edit(productImage: any, req: Request): Promise<ProductImageEntity> {
     try {
-      const { path } = productImage
-      const { name, productId } = req.body
+      const path = productImage?.path || null
+      const { name } = req.body
       const { id } = req.params
 
+      const available = await this.prisma.productImage.findFirstOrThrow({ where: { id: Number(id) }, include: { product: true } })
       return await this.prisma.productImage.update({
         where: {
           id: Number(id),
         },
         data: {
           name,
-          path,
-          product: {
-            connect: {
-              id: Number(productId),
-            },
-          },
+          path: path || available.path,
         },
         include: {
           product: {
