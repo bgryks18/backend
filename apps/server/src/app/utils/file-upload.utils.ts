@@ -4,9 +4,9 @@ import { ErrorHandler } from './errorHandler'
 
 export const imageFileFilter = (req: any, file: any, callback: any) => {
   if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-    callback(new BadRequestException('Desteklenmeyen dosya biçimi'), true)
+    return callback(new BadRequestException('Desteklenmeyen dosya biçimi'), true)
   }
-  callback(null, true)
+  return callback(null, true)
 }
 export const editFileName = (req: any, file: any, callback: any) => {
   const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
