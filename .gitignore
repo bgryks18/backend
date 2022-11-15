@@ -9,6 +9,7 @@
 node_modules
 .env
 uploads/
+apps/server/src/app/logs/
 # IDEs and editors
 /.idea
 .project
