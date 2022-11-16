@@ -47,7 +47,7 @@ model ProductImage {
   id  Int @default(autoincrement()) @id
   name  String  @unique
   path  String
-  product Product?
+  product Product? 
 
 }
 
@@ -55,7 +55,7 @@ model Product {
   id  Int @default(autoincrement()) @id
   name  String  @unique
   category  Category? @relation(fields: [categoryId], references: [id])
-  categoryId  Int? @unique
+  categoryId  Int?
   description String
   priority  Int
   slider  Slider?  @relation(fields: [sliderId], references: [id])

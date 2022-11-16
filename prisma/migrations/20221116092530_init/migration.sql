@@ -29,6 +29,7 @@ CREATE TABLE `SliderImage` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
     `path` VARCHAR(191) NOT NULL,
+    `sliderId` INTEGER NOT NULL,
 
     UNIQUE INDEX `SliderImage_name_key`(`name`),
     PRIMARY KEY (`id`)
@@ -41,16 +42,6 @@ CREATE TABLE `Slider` (
 
     UNIQUE INDEX `Slider_name_key`(`name`),
     PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `ImagesOnSliders` (
-    `sliderId` INTEGER NOT NULL,
-    `imageId` INTEGER NOT NULL,
-    `assignedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `assignedBy` VARCHAR(191) NOT NULL,
-
-    PRIMARY KEY (`sliderId`, `imageId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
@@ -67,11 +58,11 @@ CREATE TABLE `ProductImage` (
 CREATE TABLE `Product` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
-    `categoryId` INTEGER NOT NULL,
+    `categoryId` INTEGER NULL,
     `description` VARCHAR(191) NOT NULL,
     `priority` INTEGER NOT NULL,
-    `sliderId` INTEGER NOT NULL,
-    `posterId` INTEGER NOT NULL,
+    `sliderId` INTEGER NULL,
+    `posterId` INTEGER NULL,
     `seoTitle` VARCHAR(191) NULL,
     `seoContent` VARCHAR(191) NULL,
 
@@ -106,19 +97,16 @@ CREATE TABLE `Setting` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `ImagesOnSliders` ADD CONSTRAINT `ImagesOnSliders_sliderId_fkey` FOREIGN KEY (`sliderId`) REFERENCES `Slider`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `SliderImage` ADD CONSTRAINT `SliderImage_sliderId_fkey` FOREIGN KEY (`sliderId`) REFERENCES `Slider`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `ImagesOnSliders` ADD CONSTRAINT `ImagesOnSliders_imageId_fkey` FOREIGN KEY (`imageId`) REFERENCES `SliderImage`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Product` ADD CONSTRAINT `Product_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Product` ADD CONSTRAINT `Product_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Product` ADD CONSTRAINT `Product_sliderId_fkey` FOREIGN KEY (`sliderId`) REFERENCES `Slider`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Product` ADD CONSTRAINT `Product_sliderId_fkey` FOREIGN KEY (`sliderId`) REFERENCES `Slider`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE `Product` ADD CONSTRAINT `Product_posterId_fkey` FOREIGN KEY (`posterId`) REFERENCES `ProductImage`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Product` ADD CONSTRAINT `Product_posterId_fkey` FOREIGN KEY (`posterId`) REFERENCES `ProductImage`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Setting` ADD CONSTRAINT `Setting_logoId_fkey` FOREIGN KEY (`logoId`) REFERENCES `SiteImage`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
