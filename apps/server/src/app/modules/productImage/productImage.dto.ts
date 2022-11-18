@@ -6,5 +6,6 @@ export interface ProductImageWhereInput extends Prisma.ProductImageWhereInput {
   sort?: 'asc' | 'desc'
   limit?: number
   offset?: number
-  sortby: string
+  sortby?: string
+  productId?: number | string
 }

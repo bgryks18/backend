@@ -52,8 +52,18 @@ export class ProductImageService {
 
   async list(where: ProductImageWhereInput, locals: Locals): Promise<ProductImageListResponse> {
     try {
+      const omittedWhereObject = omit(where, ['offset', 'limit', 'sort', 'sortby', 'product', 'productId'])
+      const whereObject =
+        where.product === ''
+          ? { ...omittedWhereObject, product: null }
+          : where.productId
+          ? {
+              ...omittedWhereObject,
+              product: { id: Number(where.productId) },
+            }
+          : omittedWhereObject
       const res = await this.prisma.productImage.findMany({
-        where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
+        where: whereObject,
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
@@ -81,7 +91,7 @@ export class ProductImageService {
         data: res,
         info: {
           count: await this.prisma.productImage.count({
-            where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
+            where: whereObject,
             skip: locals.offset,
             take: locals.limit,
           }),
