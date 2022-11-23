@@ -56,10 +56,10 @@ export class ProductImageService {
       const whereObject =
         where.product === ''
           ? { ...omittedWhereObject, product: null }
-          : where.productId
+          : where.product
           ? {
               ...omittedWhereObject,
-              product: { id: Number(where.productId) },
+              product: { id: Number(where.product) },
             }
           : omittedWhereObject
       const res = await this.prisma.productImage.findMany({

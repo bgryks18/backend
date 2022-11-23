@@ -7,5 +7,4 @@ export interface ProductImageWhereInput extends Prisma.ProductImageWhereInput {
   limit?: number
   offset?: number
   sortby?: string
-  productId?: number | string
 }
