@@ -52,10 +52,12 @@ export class ProductImageService {
 
   async list(where: ProductImageWhereInput, locals: Locals): Promise<ProductImageListResponse> {
     try {
-      const omittedWhereObject = omit(where, ['offset', 'limit', 'sort', 'sortby', 'product', 'productId'])
+      const omittedWhereObject = omit(where, ['offset', 'limit', 'sort', 'sortby', 'product'])
       const whereObject =
-        where.product === ''
+        where.product === 'notrelated' || ''
           ? { ...omittedWhereObject, product: null }
+          : where.product === 'related'
+          ? { ...omittedWhereObject, NOT: { product: null } }
           : where.product
           ? {
               ...omittedWhereObject,
