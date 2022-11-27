@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, RequestMethod, Module } from '@nestjs/common'
 import { PrismaService } from '../../globals/prisma.service'
 import { GetListMiddleWare } from '../../middlewares/getList.middleware'
+import { ProductImageFilterMiddleWare } from '../../middlewares/productImageFilter.middleware'
 import { ProductImageController } from './productImage.controller'
 import { ProductImageService } from './productImage.service'
 import { MulterModule } from '@nestjs/platform-express'
@@ -13,5 +14,6 @@ import { MulterModule } from '@nestjs/platform-express'
 export class ProductImageModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(GetListMiddleWare).forRoutes({ path: 'productImage', method: RequestMethod.GET })
+    consumer.apply(ProductImageFilterMiddleWare).forRoutes({ path: 'productImage', method: RequestMethod.GET })
   }
 }
