@@ -5,6 +5,7 @@ import { toNumber, isInteger } from 'lodash'
 @Injectable()
 export class ProductImageFilterMiddleWare implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
+    const id = isInteger(toNumber(req.query?.id)) ? toNumber(req.query?.id) : undefined
     const productName = req.query?.productName || undefined
     const productId = isInteger(toNumber(req.query?.productId)) ? toNumber(req.query?.productId) : undefined
     const name = req.query?.name || undefined
@@ -16,6 +17,9 @@ export class ProductImageFilterMiddleWare implements NestMiddleware {
         : undefined
       : undefined
     let queries = []
+    if (id) {
+      queries = [...queries, { id }]
+    }
     if (productName) {
       queries = [...queries, { product: { name: { contains: productName } } }]
     }
@@ -30,7 +34,7 @@ export class ProductImageFilterMiddleWare implements NestMiddleware {
     } else if (hasProduct === false) {
       queries = [...queries, { product: null }]
     }
-    res.locals.filterFields = ['productName', 'productId', 'name', 'hasProduct']
+    res.locals.filterFields = ['id', 'productName', 'productId', 'name', 'hasProduct']
     res.locals.queries = queries.length > 0 ? { AND: queries } : {}
     next()
   }
