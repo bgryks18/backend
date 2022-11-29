@@ -32,8 +32,9 @@ export class SliderService {
 
   async list(where: SliderWhereInput, locals: Locals): Promise<SliderListResponse> {
     try {
+      const omittedWhereObject = omit(where, ['offset', 'limit', 'sort', 'sortby', ...locals.filterFields])
       const res = await this.prisma.slider.findMany({
-        where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
+        where: { ...omittedWhereObject, ...locals.queries },
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
@@ -53,7 +54,7 @@ export class SliderService {
         data: res,
         info: {
           count: await this.prisma.slider.count({
-            where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
+            where: { ...omittedWhereObject, ...locals.queries },
           }),
         },
       }
