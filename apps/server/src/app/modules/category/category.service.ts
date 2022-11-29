@@ -70,8 +70,6 @@ export class CategoryService {
         info: {
           count: await this.prisma.category.count({
             where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
-            skip: locals.offset,
-            take: locals.limit,
           }),
         },
       }

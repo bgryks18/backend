@@ -54,8 +54,6 @@ export class SliderService {
         info: {
           count: await this.prisma.slider.count({
             where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
-            skip: locals.offset,
-            take: locals.limit,
           }),
         },
       }

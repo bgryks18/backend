@@ -93,8 +93,6 @@ export class SliderImageService {
         info: {
           count: await this.prisma.sliderImage.count({
             where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
-            skip: locals.offset,
-            take: locals.limit,
           }),
         },
       }

@@ -1,13 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { omit } from 'lodash'
 import { PrismaService } from '../../globals/prisma.service'
-import { ProductImageCreateInput, ProductImageWhereInput } from './productImage.dto'
-import {
-  ProductImageDeletedResponse,
-  ProductImageEditReqBody,
-  ProductImageEntity,
-  ProductImageListResponse,
-} from './productImage.model'
+import { ProductImageWhereInput } from './productImage.dto'
+import { ProductImageDeletedResponse, ProductImageEntity, ProductImageListResponse } from './productImage.model'
 import { Locals } from '../../middlewares/getList.middleware'
 import { ErrorHandler } from '../../utils/errorHandler'
 import { Request } from 'express'
@@ -84,8 +79,6 @@ export class ProductImageService {
         info: {
           count: await this.prisma.productImage.count({
             where: { ...omittedWhereObject, ...locals.queries },
-            skip: locals.offset,
-            take: locals.limit,
           }),
         },
       }

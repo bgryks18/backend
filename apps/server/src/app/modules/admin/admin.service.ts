@@ -34,8 +34,6 @@ export class AdminService {
         info: {
           count: await this.prisma.admin.count({
             where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
-            skip: locals.offset,
-            take: locals.limit,
           }),
         },
       }

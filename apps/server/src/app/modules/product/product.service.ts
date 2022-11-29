@@ -58,8 +58,6 @@ export class ProductService {
         info: {
           count: await this.prisma.product.count({
             where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
-            skip: locals.offset,
-            take: locals.limit,
           }),
         },
       }
