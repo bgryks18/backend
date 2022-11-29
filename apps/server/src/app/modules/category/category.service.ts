@@ -40,8 +40,10 @@ export class CategoryService {
 
   async list(where: CategoryWhereInput, locals: Locals): Promise<CategoryListResponse> {
     try {
+      const omittedWhereObject = omit(where, ['offset', 'limit', 'sort', 'sortby', ...locals.filterFields])
+
       const res = await this.prisma.category.findMany({
-        where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
+        where: { ...omittedWhereObject, ...locals.queries },
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
@@ -69,7 +71,7 @@ export class CategoryService {
         data: res,
         info: {
           count: await this.prisma.category.count({
-            where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
+            where: { ...omittedWhereObject, ...locals.queries },
           }),
         },
       }
