@@ -31,8 +31,10 @@ export class ProductService {
 
   async list(where: ProductWhereInput, locals: Locals): Promise<ProductListResponse> {
     try {
+      const omittedWhereObject = omit(where, ['offset', 'limit', 'sort', 'sortby', ...locals.filterFields])
+
       const res = await this.prisma.product.findMany({
-        where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
+        where: { ...omittedWhereObject, ...locals.queries },
         orderBy: { [locals.sortby]: locals.sort },
         skip: locals.offset,
         take: locals.limit,
@@ -57,7 +59,7 @@ export class ProductService {
         data: res,
         info: {
           count: await this.prisma.product.count({
-            where: omit(where, ['offset', 'limit', 'sort', 'sortby']),
+            where: { ...omittedWhereObject, ...locals.queries },
           }),
         },
       }
