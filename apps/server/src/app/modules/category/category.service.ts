@@ -31,6 +31,7 @@ export class CategoryService {
               },
             },
           },
+          _count: true,
         },
       })
     } catch (e) {
@@ -103,6 +104,7 @@ export class CategoryService {
               },
             },
           },
+          _count: true,
         },
       })
     } catch (e) {
@@ -135,6 +137,7 @@ export class CategoryService {
               },
             },
           },
+          _count: true,
         },
       })
     } catch (e) {
