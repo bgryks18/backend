@@ -65,6 +65,7 @@ export class CategoryService {
               },
             },
           },
+          _count: true,
         },
       })
       return {
