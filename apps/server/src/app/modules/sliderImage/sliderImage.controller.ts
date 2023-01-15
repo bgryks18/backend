@@ -46,26 +46,10 @@ export class SliderImageController {
 
   @Post()
   @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        name: {
-          type: 'string',
-        },
-        sliderId: {
-          type: 'number',
-        },
-        image: {
-          type: 'string',
-          format: 'binary',
-        },
-      },
-    },
-  })
-  @ApiOkResponse({ type: SliderImageEntity })
+  @ApiBody({ type: SliderImageCreateReqBody })
+  @ApiCreatedResponse({ type: SliderImageEntity })
   @UseInterceptors(
-    FileInterceptor('image', {
+    FileInterceptor('path', {
       storage: multer.diskStorage({
         destination: 'uploads',
         filename: editFileName,
@@ -73,8 +57,30 @@ export class SliderImageController {
       fileFilter: imageFileFilter,
     }),
   )
-  async create(@UploadedFile() image: any, @Req() req: Request): Promise<any> {
+  async create(@UploadedFile() image: Express.Multer.File, @Req() req: Request): Promise<SliderImageEntity> {
     return this.sliderImageService.create(image, req)
+  }
+
+  @Put(':id')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({ type: SliderImageEditReqBody })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: 'number',
+  })
+  @ApiCreatedResponse({ type: SliderImageEntity })
+  @UseInterceptors(
+    FileInterceptor('path', {
+      storage: multer.diskStorage({
+        destination: 'uploads',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+  )
+  async edit(@UploadedFile() image: Express.Multer.File, @Req() req: Request): Promise<SliderImageEntity> {
+    return this.sliderImageService.edit(image, req)
   }
 
   @Get()

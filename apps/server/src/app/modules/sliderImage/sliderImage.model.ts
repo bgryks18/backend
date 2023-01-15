@@ -19,7 +19,7 @@ export class SliderImageCreateReqBody {
   @ApiProperty()
   name: string
 
-  @ApiProperty()
+  @ApiProperty({ type: 'file', isArray: false, required: true })
   path: string
 
   @ApiProperty()
@@ -30,11 +30,8 @@ export class SliderImageEditReqBody {
   @ApiProperty()
   name: string
 
-  @ApiProperty()
+  @ApiProperty({ type: 'file', isArray: false, required: false })
   path: string
-
-  @ApiProperty()
-  sliderId: number
 }
 
 export class SliderImageDeleteManyReqBody {
