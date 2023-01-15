@@ -136,11 +136,6 @@ export class ErrorHandler {
             break
 
           case 'P2008':
-            errorObj = { message: 'Sorgu hatası.', field: e.meta?.target }
-            errorCode = 500
-            break
-
-          case 'P2008':
             errorObj = { message: 'Sorgu başarısız.', field: e.meta?.target }
             errorCode = 500
             break
