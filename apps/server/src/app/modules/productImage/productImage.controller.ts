@@ -47,7 +47,7 @@ export class ProductImageController {
   @Post()
   @ApiConsumes('multipart/form-data')
   @ApiBody({ type: ProductImageCreateReqBody })
-  @ApiOkResponse({ type: ProductImageEntity })
+  @ApiCreatedResponse({ type: ProductImageEntity })
   @UseInterceptors(
     FileInterceptor('path', {
       storage: multer.diskStorage({
@@ -116,7 +116,7 @@ export class ProductImageController {
     required: true,
     type: 'number',
   })
-  @ApiOkResponse({ type: ProductImageEntity })
+  @ApiCreatedResponse({ type: ProductImageEntity })
   @UseInterceptors(
     FileInterceptor('path', {
       storage: multer.diskStorage({
