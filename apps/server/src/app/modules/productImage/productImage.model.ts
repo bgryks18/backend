@@ -19,7 +19,7 @@ export class ProductImageCreateReqBody {
   @ApiProperty()
   name: string
 
-  @ApiProperty()
+  @ApiProperty({ type: 'file', isArray: false })
   path: string
 }
 
@@ -27,7 +27,7 @@ export class ProductImageEditReqBody {
   @ApiProperty()
   name: string
 
-  @ApiProperty()
+  @ApiProperty({ type: 'file', isArray: false, required: false })
   path: string
 }
 

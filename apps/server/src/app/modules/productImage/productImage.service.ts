@@ -2,7 +2,12 @@ import { Injectable } from '@nestjs/common'
 import { omit } from 'lodash'
 import { PrismaService } from '../../globals/prisma.service'
 import { ProductImageWhereInput } from './productImage.dto'
-import { ProductImageDeletedResponse, ProductImageEntity, ProductImageListResponse } from './productImage.model'
+import {
+  ProductImageCreateReqBody,
+  ProductImageDeletedResponse,
+  ProductImageEntity,
+  ProductImageListResponse,
+} from './productImage.model'
 import { Locals } from '../../middlewares/getList.middleware'
 import { ErrorHandler } from '../../utils/errorHandler'
 import { Request } from 'express'
@@ -10,9 +15,9 @@ import * as fs from 'fs'
 @Injectable()
 export class ProductImageService {
   constructor(private prisma: PrismaService) {}
-  async create(productImage: any, req: Request): Promise<ProductImageEntity> {
+  async create(productImage: Express.Multer.File, req: Request): Promise<ProductImageEntity> {
     try {
-      const { path } = productImage
+      const path = productImage?.path || null
       const { name } = req.body
 
       return await this.prisma.productImage.create({
@@ -116,13 +121,16 @@ export class ProductImageService {
     }
   }
 
-  async edit(productImage: any, req: Request): Promise<ProductImageEntity> {
+  async edit(productImage: Express.Multer.File, req: Request): Promise<ProductImageEntity> {
     try {
       const path = productImage?.path || null
       const { name } = req.body
       const { id } = req.params
 
       const available = await this.prisma.productImage.findFirstOrThrow({ where: { id: Number(id) }, include: { product: true } })
+      if (available.path && path) {
+        fs.unlinkSync(available.path)
+      }
       return await this.prisma.productImage.update({
         where: {
           id: Number(id),
@@ -163,7 +171,7 @@ export class ProductImageService {
           id,
         },
       })
-      fs.unlinkSync('./' + foundItem.path)
+      fs.unlinkSync(foundItem.path)
       await this.prisma.productImage.delete({
         where: {
           id,
@@ -177,6 +185,17 @@ export class ProductImageService {
 
   async deleteMany(idList: number[]): Promise<ProductImageDeletedResponse> {
     try {
+      const foundItems = await this.prisma.productImage.findMany({
+        where: {
+          id: {
+            in: idList,
+          },
+        },
+      })
+
+      foundItems.forEach((item, index) => {
+        fs.unlinkSync(foundItems[index].path)
+      })
       await this.prisma.productImage.deleteMany({
         where: {
           id: {

@@ -46,26 +46,10 @@ export class ProductImageController {
 
   @Post()
   @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        name: {
-          type: 'string',
-        },
-        productId: {
-          type: 'number',
-        },
-        image: {
-          type: 'string',
-          format: 'binary',
-        },
-      },
-    },
-  })
+  @ApiBody({ type: ProductImageCreateReqBody })
   @ApiOkResponse({ type: ProductImageEntity })
   @UseInterceptors(
-    FileInterceptor('image', {
+    FileInterceptor('path', {
       storage: multer.diskStorage({
         destination: 'uploads',
         filename: editFileName,
@@ -73,7 +57,7 @@ export class ProductImageController {
       fileFilter: imageFileFilter,
     }),
   )
-  async create(@UploadedFile() image: any, @Req() req: Request): Promise<any> {
+  async create(@UploadedFile() image: Express.Multer.File, @Req() req: Request): Promise<ProductImageEntity> {
     return this.productImageService.create(image, req)
   }
 
@@ -126,23 +110,7 @@ export class ProductImageController {
 
   @Put(':id')
   @ApiConsumes('multipart/form-data')
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        name: {
-          type: 'string',
-        },
-        productId: {
-          type: 'number',
-        },
-        image: {
-          type: 'string',
-          format: 'binary',
-        },
-      },
-    },
-  })
+  @ApiBody({ type: ProductImageEditReqBody })
   @ApiParam({
     name: 'id',
     required: true,
@@ -150,7 +118,7 @@ export class ProductImageController {
   })
   @ApiOkResponse({ type: ProductImageEntity })
   @UseInterceptors(
-    FileInterceptor('image', {
+    FileInterceptor('path', {
       storage: multer.diskStorage({
         destination: 'uploads',
         filename: editFileName,
@@ -158,7 +126,7 @@ export class ProductImageController {
       fileFilter: imageFileFilter,
     }),
   )
-  async edit(@UploadedFile() image: any, @Req() req: Request): Promise<any> {
+  async edit(@UploadedFile() image: Express.Multer.File, @Req() req: Request): Promise<ProductImageEntity> {
     return this.productImageService.edit(image, req)
   }
 
