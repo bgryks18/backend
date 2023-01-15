@@ -69,7 +69,7 @@ export class SliderImageController {
     required: true,
     type: 'number',
   })
-  @ApiCreatedResponse({ type: SliderImageEntity })
+  @ApiOkResponse({ type: SliderImageEntity })
   @UseInterceptors(
     FileInterceptor('path', {
       storage: multer.diskStorage({

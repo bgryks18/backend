@@ -116,7 +116,7 @@ export class ProductImageController {
     required: true,
     type: 'number',
   })
-  @ApiCreatedResponse({ type: ProductImageEntity })
+  @ApiOkResponse({ type: ProductImageEntity })
   @UseInterceptors(
     FileInterceptor('path', {
       storage: multer.diskStorage({
